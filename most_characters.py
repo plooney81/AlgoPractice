@@ -2,6 +2,9 @@
 # so most_characters("abcda") should return "a".
 
 def most_characters(string):
+    # short circuit
+    # if len(str) == 0:
+    #     print('You entered an empty string')
     dictionary = {}
     # loop through the string, the char doesn't exist as a key already in the dictionary
     # then it adds that char as a key and initializes its value as 1
