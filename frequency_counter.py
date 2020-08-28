@@ -27,10 +27,8 @@ def has_same_digit_frequency(list1, list2):
         # if not then we also return false.
         for key in dict_1:
             if key in dict_2:
-                if dict_1[key] == dict_2[key]:
-                    pass
-                else:
-                    False
+                if dict_1[key] != dict_2[key]:
+                    return False
             else:
                 return False
         # if we can iterate through the entire dictionary without getting a return false, then they are all the same frequency and we return True
