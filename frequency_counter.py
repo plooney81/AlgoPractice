@@ -13,7 +13,7 @@ def create_frequency_dict(some_list):
     return dictionary
 
 def has_same_digit_frequency(list1, list2):
-    # call our create_dicitonary
+    # call our create_dicitonary for each list and assign to dict_1 and dict_2 respectively
     dict_1 = create_frequency_dict(list1)
     dict_2 = create_frequency_dict(list2)
     
@@ -36,7 +36,7 @@ def has_same_digit_frequency(list1, list2):
         # if we can iterate through the entire dictionary without getting a return false, then they are all the same frequency and we return True
         return True
 
-first_list = [2,3,3,4]
+first_list = [2,2,3]
 second_list = [3,2,2]
 
 print(f'\n\nDo the lists {first_list} and {second_list} have the same frequency of digits?\n{has_same_digit_frequency(first_list, second_list)}\n\n')
