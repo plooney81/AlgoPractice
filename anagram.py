@@ -1,5 +1,16 @@
 # write a function called anagram that accepts two strings and return True if they are anagrams and false if they aren't.
 
+# function that gets a single string from the user
+def get_a_string():
+    print('\n\nPlease input a string')
+    while True:
+        try:
+            user_input = input('> ')
+            to_int = int(user_input)
+            print('\n\nInvalid input, please input a string')
+        except ValueError:
+            return user_input
+
 # function that makes a string into a dictionary
 def to_dictionary(some_string):
     #initialize our empty dictionary
@@ -14,16 +25,6 @@ def to_dictionary(some_string):
 
     return our_dictionary
 
-# function that gets a single string from the user
-def get_a_string():
-    print('\n\nPlease input a string')
-    while True:
-        try:
-            user_input = input('> ')
-            to_int = int(user_input)
-            print('\n\nInvalid input, please input a string')
-        except ValueError:
-            return user_input
 
 # function that checks if the two dictionaries are anagrams
 def are_they_anagrams():
