@@ -26,7 +26,11 @@ def get_a_string():
             return user_input
 
 # function that checks if the two dictionaries are anagrams
-def are_they_anagrams(dict_1, dict_2):
+def are_they_anagrams():
+    dict_1 = to_dictionary(get_a_string())
+    dict_2 = to_dictionary(get_a_string())
+    
+    # short circuit
     if len(dict_1) != len(dict_2):
         return False
     
@@ -39,8 +43,4 @@ def are_they_anagrams(dict_1, dict_2):
             
     return True
 
-
-print(dict_1)
-print(dict_2)
-
-print(f'\n\nAre they anagrams? {are_they_anagrams(dict_1, dict_2)}')
+print(f'\n\nAre they anagrams? {are_they_anagrams()}')
