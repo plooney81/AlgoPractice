@@ -23,6 +23,7 @@ while True:
     except ValueError:
         break
 
+# function call that saves the return to the variable char_dictionary
 char_dictionary = returns_a_dict(user_input)
 
 print(f'\n\n{char_dictionary}\n\n')
