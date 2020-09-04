@@ -35,13 +35,18 @@ def are_they_anagrams():
     if len(dict_1) != len(dict_2):
         return False
     
-    for key in dict_1:
-        if key not in dict_2.keys():
-            return False
-        else:
-            if dict_1[key] != dict_2[key]:
-                return False
+    # for key in dict_1:
+    #     if key not in dict_2.keys():
+    #         return False
+    #     else:
+    #         if dict_1[key] != dict_2[key]:
+    #             return False
+    # return True
+    if dict_1 == dict_2:
+        return True
+    else:
+        return False
             
-    return True
+    
 
 print(f'\n\nAre they anagrams? {are_they_anagrams()}')
