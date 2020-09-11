@@ -98,10 +98,18 @@ function pigLatin(word){
             }
         }else{
             for(let singleIndex = 0; singleIndex < consonants.single.length; singleIndex++){
-                if (consonants.single[singleIndex] === )
+                if (consonants.single[singleIndex] === word[0]){
+                    for (let vowelIndex = 0; vowelIndex < consonants.vowels.length; vowelIndex++){
+                        if (consonants.vowels[vowelIndex] === word[1]){
+                            newWord += word.slice(1);
+                            newWord += `${word.slice(0, 1)}ay`
+                            return newWord;
+                        }
+                    }
+                }
             }
         }
     }
 }
 
-console.log(pigLatin("that"));
+console.log(pigLatin("water"));
