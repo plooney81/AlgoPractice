@@ -62,4 +62,3 @@ function longestCommonPrefix(array){
 }
 
 console.log(longestCommonPrefix(["flo","flop","flower"]));
-
