@@ -1,3 +1,3 @@
-# friyay2
+# Algorithms!
 
 This repository houses many of the algorithm challenges I completed.
