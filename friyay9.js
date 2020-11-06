@@ -8,6 +8,14 @@ const meanOfArray = (arr) => {
     return (arr.reduce((a, b) => a + b) / arr.length)
 }
 
+// ? when we give a the sort method a compare(a, b) function, 
+// ? if it evaluates to less than zero, the sort() method sorts a to a lower index
+// ? than b...i.e. A WILL COME FIRST
+
+// ? if compare is greater than zero, the method will sort b to a lower index
+// ? B WILL COME FIRST
+
+// ? if the compare function returns zero, then the sort method leaves their positions unchanged.
 const medianOfArray = (arr) => {
     // first we sort in ascending numeric order, then splice.
     return arr.sort((a, b) => a - b ).splice((arr.length / 2) - 1, 1);
