@@ -3,10 +3,8 @@
 // median --> number at the exact middle of a sorted array
 // mode --> number that appears the most times
 
-const meanOfArray = (arr) => {
-    // reduce sums the entire array, then we divide by the length to get the average
-    return (arr.reduce((a, b) => a + b) / arr.length)
-}
+// reduce sums the entire array, then we divide by the length to get the average
+const meanOfArray = (arr) => arr.reduce((a, b) => a + b) / arr.length;
 
 // ? when we give a the sort method a compare(a, b) function, 
 // ? if it evaluates to less than zero, the sort() method sorts a to a lower index
@@ -39,5 +37,5 @@ const modeOfArray = (arr) => {
 const testArray = [4, 3, 1, 2, 2, 7, 9, 14, 2, 27, 400, 9, 1, 8];
 
 console.log(meanOfArray(testArray));
-console.log(medianOfArray(testArray));
-console.log(modeOfArray(testArray));
+// console.log(medianOfArray(testArray));
+// console.log(modeOfArray(testArray));
