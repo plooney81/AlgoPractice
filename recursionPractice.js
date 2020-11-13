@@ -52,7 +52,11 @@ const countTriplets = (array, sum) => {
             if(array[i]+array[j]+array[k] > sum){
                 k--
             }else{
+                // if the greatest val satisfies the condition, then we know that all 
+                // the values between k and j will also satisfy the condition as well
+                // if they are right next to each other, then it will only add one.
                 count += k - j
+                console.log(i, j, k)
                 j++
             }
         }
