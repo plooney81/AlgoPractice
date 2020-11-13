@@ -1,6 +1,4 @@
-//! THIS ISN'T A RECURSION PROBLEM, BUT MORE OF A GENERAL ALGORITHM PROBLEM
 //? Given an array of distinct integers and a sum value. Find count of triplets with sum smaller than given sum value. Expected Time Complexity is O(n2)
-
 const countTriplets1 = (array, sum) => {
     array.sort((a, b) => a - b)
     let count = 0;
@@ -64,3 +62,4 @@ const countTriplets = (arr, r) => {
 console.log(countTriplets([1, 2, 1, 2, 4], 2)) //3
 console.log(countTriplets([1, 3, 9, 9, 27, 81], 3)) //6
 console.log(countTriplets([1, 5, 5, 25, 125], 5)) //4
+
