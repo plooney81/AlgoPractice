@@ -9,6 +9,15 @@ const addUpToSlow = (n) => {
     return total;
 }
 
+//! Recursive approach
+const addUpToRecursive = (n, sum=0) => {
+    if(n === 0){
+        return sum
+    }else{
+        return addUpToRecursive(n - 1, sum + n)
+    }
+}
+
 //! Math approach
 const addUpToFast = (n) => (n * (n + 1)) / 2
 
@@ -20,10 +29,17 @@ const addUpToFast = (n) => (n * (n + 1)) / 2
 //* algo 2 is the math approach
 const checkTime = (n, algo) => {
     let t1 = performance.now();
-    algo === 1 ? addUpToSlow(n) : addUpToFast(n)
+    if(algo === 1){
+        addUpToSlow(n)
+    }else if(algo === 2){
+        addUpToRecursive(n)
+    }else{
+        addUpToFast(n)
+    }
     let t2 = performance.now();
     console.log(`Time elapsed: ${(t2 - t1) / 1000} seconds`)
 }
 
-checkTime(1000000000, 1);
-checkTime(1000000000, 2);
+checkTime(10000, 1);
+checkTime(10000, 2);
+checkTime(10000, 3);
