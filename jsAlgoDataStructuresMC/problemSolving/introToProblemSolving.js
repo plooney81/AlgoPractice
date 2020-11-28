@@ -32,3 +32,19 @@
 // 2. charCount('my phone # is 8675309') // how to handle spaces or numbers?
 // 3. charCount('') // how to handle empty inputs ???
 // 4. charCount(null) // how to handle invalid inputs ???
+
+//* Break it down
+//? Steps:
+//? Explicitly write out the steps that you need to take to solve the problem
+    //? Doesn't need to be super detailed...just the basics
+
+//todo EXAMPLE for Breaking it down:
+// Function which takes a string and returns counts of each char in the string
+const charCount = (str) => {
+    // make an object that we will return later
+    // loop over the str, for each char
+        // if the char is a number/letter and is a key in the object, add on to the count
+        // if the char is a number/letter and is not a key in the object, initialize its count at 1
+        // if the char is not a number/letter ... we don't care about it
+    // return object at the end
+}
