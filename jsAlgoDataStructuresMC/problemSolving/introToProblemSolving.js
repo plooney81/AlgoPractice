@@ -19,3 +19,16 @@
 // 3. Depends
 // 4. Function name (something like --> returnSum), num1, num2
 
+//* Explore concrete examples
+//? Steps
+//? 1. Start w/ simple examples
+//? 2. Progress to more complex examples
+//? 3. Explore examples w/ empty inputs
+//? 4. Explore examples w/ invalid inputs
+
+//todo EXAMPLE for Explore concrete examples:
+// Function which takes a string and returns counts of each char in the string
+// 1. charCount('aaaa') // {a: 4}
+// 2. charCount('my phone # is 8675309') // how to handle spaces or numbers?
+// 3. charCount('') // how to handle empty inputs ???
+// 4. charCount(null) // how to handle invalid inputs ???
