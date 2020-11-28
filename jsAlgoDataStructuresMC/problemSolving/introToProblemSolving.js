@@ -83,13 +83,18 @@ const charCount2 = (str) => {
 
 //! another way
 //! little fast to use the charCodeAt than the regex in this case
+const isAlphaNumeric = (char) => {
+    //? greater than 47 and less than 58 (numeric (0-9))
+    //? greater than 96 and less than 123 (lower alpha (a-z))
+    //? greater than 64 and less than 91 (upper alpha (A-Z))
+    const code = char.charCodeAt(0);
+    return (code > 47 && code < 58) || (code > 64 && code < 91) || (code > 96 && code < 123)
+}
+
 const charCount3 = (str) => {
     const returnObject = {};
-    str.toLowerCase().split('').filter(char => {
-        let code = char.charCodeAt(0)
-        return (code > 47 && code < 58) || (code > 96 && code < 123) //? greater than 47 and less than 58 (numeric (0-9))
-    }).forEach(filteredChar => {                                     //? greater than 96 and less than 123 (lower alpha (a-z))   
-        returnObject[filteredChar] = ++returnObject[filteredChar] || 1; //? greater than 64 and less than 91 (upper alpha (A-Z))
+    str.toLowerCase().split('').filter(char => isAlphaNumeric(char)).forEach(filteredChar => {                                        
+        returnObject[filteredChar] = ++returnObject[filteredChar] || 1; 
     })
     return returnObject
 }
