@@ -48,3 +48,38 @@ const charCount = (str) => {
         // if the char is not a number/letter ... we don't care about it
     // return object at the end
 }
+
+//* Solve/Simplify
+const charCount = (str) => {
+    const returnObject = {};
+    str.toLowerCase().split('').forEach(char => {
+        if(/[a-z0-9]/.test(char)){
+            if(returnObject[char] > 0){
+                returnObject[char]++;
+            }else{
+                returnObject[char] = 1;
+            }
+        }
+    })
+    return returnObject
+}
+
+
+//* Refactor
+//? Can you make it better
+//? Try and improve your code --> this can be readibility, or performance, or a completely different approach
+
+//! instead of testing the regex for each char, why don't we use the match and change the expression to global, 
+//! it will return an array of all the matches of the expression. We then loop over that.
+const charCount2 = (str) => {
+    const returnObject = {};
+    str.toLowerCase().match(/([a-z0-9])+/g).forEach(char => {
+        returnObject[char] = returnObject[char] ? returnObject[char] + 1 : 1
+    })
+    return returnObject
+}
+
+const string = 'My number is 8675309';
+
+console.log(charCount(string));
+console.log(charCount2(string));
