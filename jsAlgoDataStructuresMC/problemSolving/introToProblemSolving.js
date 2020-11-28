@@ -40,14 +40,14 @@
 
 //todo EXAMPLE for Breaking it down:
 // Function which takes a string and returns counts of each char in the string
-const charCount = (str) => {
+// const charCount = (str) => {
     // make an object that we will return later
     // loop over the str, for each char
         // if the char is a number/letter and is a key in the object, add on to the count
         // if the char is a number/letter and is not a key in the object, initialize its count at 1
         // if the char is not a number/letter ... we don't care about it
     // return object at the end
-}
+// }
 
 //* Solve/Simplify
 const charCount = (str) => {
@@ -69,11 +69,10 @@ const charCount = (str) => {
 //? Can you make it better
 //? Try and improve your code --> this can be readibility, or performance, or a completely different approach
 
-//! instead of testing the regex for each char, why don't we use the match and change the expression to global, 
-//! it will return an array of all the matches of the expression. We then loop over that.
+//! instead of testing the regex for each char, why don't we filter out the characters we don't want, then loop over that.
 const charCount2 = (str) => {
     const returnObject = {};
-    str.toLowerCase().match(/([a-z0-9])+/g).forEach(char => {
+    str.toLowerCase().split('').filter(char => /[a-z0-9]/.test(char)).forEach(char => {
         returnObject[char] = returnObject[char] ? returnObject[char] + 1 : 1
     })
     return returnObject
