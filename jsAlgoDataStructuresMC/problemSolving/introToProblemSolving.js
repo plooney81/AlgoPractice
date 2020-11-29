@@ -99,7 +99,7 @@ const charCount3 = (str) => {
     return returnObject
 }
 
-const string = 'My number is 8675309';
+const string = 'Hello World hi!!!!!';
 
 console.log(charCount(string));
 console.log(charCount2(string));
