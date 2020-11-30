@@ -48,6 +48,7 @@ const validAnagram = (str1, str2) => {
         if(freqCounter[char]){
             freqCounter[char] -= 1;
         }else{
+            //if it cant find the char, or the value for that letter is zero, then we save false to the var we will return
             returnVar = false;
         }
     })
