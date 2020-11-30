@@ -94,7 +94,7 @@ const countUniqueValues3 = (arr, left=0, right=1) => {
         return countUniqueValues3(arr, left, right)
     }
 }
-//todo time complexity = ??????
+//todo time complexity = O(N) ... I think
 
 console.log(countUniqueValues3([1, 1, 1, 1, 1, 2])) // 2
 console.log(countUniqueValues3([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
