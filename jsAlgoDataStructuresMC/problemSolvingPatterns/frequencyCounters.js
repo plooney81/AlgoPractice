@@ -43,17 +43,15 @@ const validAnagram = (str1, str2) => {
     str1.split('').forEach(char => {
         freqCounter[char] = ++freqCounter[char] || 1;
     })
-    // console.log(freqCounter);
+    let returnVar = true;
     str2.split('').forEach(char => {
-        freqCounter[char] = freqCounter[char] ? --freqCounter[char] : -1;
-    })
-    // console.log(freqCounter);
-    for(key in freqCounter){
-        if(freqCounter[key] !== 0){
-            return false
+        if(freqCounter[char]){
+            freqCounter[char] -= 1;
+        }else{
+            returnVar = false;
         }
-    }
-    return true
+    })
+    return returnVar
 }
 
 //todo built in function way
