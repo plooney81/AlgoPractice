@@ -30,6 +30,7 @@ const sameFrequency = (int1, int2) => {
     }
     return true
 }
+//todo O(N) time complexity
 
 console.log(sameFrequency(182, 281)) //true
 console.log(sameFrequency(34, 14)) //false
