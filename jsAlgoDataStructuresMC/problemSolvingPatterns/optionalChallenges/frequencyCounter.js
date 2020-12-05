@@ -17,17 +17,18 @@ const sameFrequency = (int1, int2) => {
         freqCounter[int] = ++freqCounter[int] || 1;
     });
     //* Compare using the second integer and subtracting
+    //* If the value key doesn't exist, or if the value is zero, then it will return false
+    //* zero is falsy, if it value is zero already, then the values don't match 
+    //* (i.e. it would make it -1) which means one has more of that specific integer than the other.
     for(let i = 0; i < int2.length; i++){
         let int = int2[i];
-        freqCounter[int] = freqCounter[int] ? freqCounter[int] - 1 : - 1;
-    }
-    //* Look in the object, if any value is not zero, then the numbers do not match...return false.
-    for(keys in freqCounter){
-        if(freqCounter[keys] !== 0){
+        if(freqCounter[int]){
+            freqCounter[int] -= 1
+        }else{
             return false
         }
-        return true
     }
+    return true
 }
 
 console.log(sameFrequency(182, 281)) //true
