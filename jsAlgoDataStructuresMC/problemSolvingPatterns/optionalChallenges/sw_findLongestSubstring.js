@@ -59,6 +59,25 @@ const findLongestSubstring2 = (str) => {
     return maxLength > currentSlice.length ? maxLength : currentSlice.length
 }
 
+//* Similar to my initial approach, but instead of saving the number of times the character has been there, 
+//* This saves the most recent index of the char in the string, if it is before the start of the most recent
+//* substring, then it doesn't matter, because of the statement on line 73
+const findLongestSubstring3 = (str) => {
+    let longest = 0;
+    let seen = {};
+    let start = 0;
+
+    for(let i = 0; i < str.length; i++){
+        let char = str[i];
+        if(seen[char]){
+            start = Math.max(start, seen[char]);
+        }
+        longest = Math.max(longest, i - start + 1);
+        seen[char] = i + 1;
+    }
+    return longest;
+}
+
 // console.log(findLongestSubstring2('')) //0
 console.log(findLongestSubstring2('rithmschool')) //7
 console.log(findLongestSubstring2('thisisawesome')) //6
