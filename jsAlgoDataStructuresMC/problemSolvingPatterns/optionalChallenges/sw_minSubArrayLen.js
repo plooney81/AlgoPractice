@@ -15,9 +15,15 @@ const minSubArrayLen = (arr, target) => {
     let end = 0;
     let minLength = Infinity;
     while (start < arr.length){
+        // if the total isn't greater or equal to our target
+        // then we add the newest value onto the total
+        // and increment the end pointer
         if(total < target && end < arr.length){
             total += arr[end]
             end++;
+        // if the total is greater than or equal to the target
+        // we find if the newest subarray is smaller in length than the previous
+        // and then increment the start pointer
         }else if(total >= target){
             minLength = minLength < (end - start) ? minLength : (end - start);
             total -= arr[start];
