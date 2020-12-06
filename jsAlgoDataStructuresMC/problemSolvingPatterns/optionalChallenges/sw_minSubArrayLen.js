@@ -39,8 +39,32 @@ const minSubArrayLen = (arr, target) => {
     return minLength === Infinity ? 0 : minLength
 }
 
-console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7)) //2
-console.log(minSubArrayLen([2, 1, 6, 5, 4], 9)) //2
-console.log(minSubArrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)) //1
-console.log(minSubArrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)) //3
-console.log(minSubArrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)) //5
+// console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7)) //2
+// console.log(minSubArrayLen([2, 1, 6, 5, 4], 9)) //2
+// console.log(minSubArrayLen([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)) //1
+// console.log(minSubArrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)) //3
+// console.log(minSubArrayLen([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)) //5
+
+//Recursively
+
+const minSubArrayLen2 = (arr, target, total=0, start=0, end=0, minLength=Infinity) => {
+    if(start > arr.length || end > arr.length){
+        return minLength === Infinity ? 0 : minLength
+    }
+    if(total < target){
+        total += arr[end]
+        end++;
+        return minSubArrayLen2(arr, target, total, start, end, minLength)
+    }else if(total >= target){
+        minLength = minLength < (end - start) ? minLength : (end - start);
+        total -= arr[start];
+        start++;
+        return minSubArrayLen2(arr, target, total, start, end, minLength)
+    }
+}
+
+console.log(minSubArrayLen2([2, 3, 1, 2, 4, 3], 7)) //2
+console.log(minSubArrayLen2([2, 1, 6, 5, 4], 9)) //2
+console.log(minSubArrayLen2([3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52)) //1
+console.log(minSubArrayLen2([1, 4, 16, 22, 5, 7, 8, 9, 10], 39)) //3
+console.log(minSubArrayLen2([1, 4, 16, 22, 5, 7, 8, 9, 10], 55)) //5
