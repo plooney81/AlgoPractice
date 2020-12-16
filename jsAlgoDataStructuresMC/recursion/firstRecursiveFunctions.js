@@ -41,5 +41,11 @@ const sumRange = (num) => {
 const sumRange2 = (num) => num === 1 ? 1 : num + sumRange2(num - 1);
 
 console.log(sumRange2(3)); //6
+//How it works
+//sumRange(3)
+//          return 3 + sumRange(2)
+//                              return 2 + sumRange(1)
+//                                                  return 1
+
 console.log(sumRange2(4)); //10
 console.log(sumRange2(5)); //15
