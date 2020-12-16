@@ -27,7 +27,7 @@ const recursiveFactorial = (n) => n === 1 ? 1 : n * recursiveFactorial(--n); // 
 
 
 
-//^ is the same as...this one is a little easier to follow
+//^ is the same...this one is a little easier to follow
 const recursiveFactorial2 = (n) => {
     if(n === 1){
         return 1;
