@@ -24,6 +24,7 @@ const recursiveFactorial = (n) => n === 1 ? 1 : n * recursiveFactorial(--n); // 
 // console.log(recursiveFactorial(5)); //120
 // console.log(recursiveFactorial(4)); //24
 // console.log(recursiveFactorial(3)); //6
+console.log(recursiveFactorial(7)); //5040
 
 
 
