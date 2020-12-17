@@ -7,8 +7,11 @@
 // fib(28) //317811
 // fib(35) //9227465
 
+// non one-line version
 // const fib = (n) => {
-//     if(n <= 2) return 1;
+//     if(n <= 2){ 
+//         return 1; 
+//     } 
 //     return fib(n - 1) + fib(n - 2);
 // }
 
