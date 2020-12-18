@@ -26,17 +26,18 @@
 // }
 
 const stringifyNumbers = (obj) => {
+    let newObj = {};
     for(let key in obj){
-        if(isNaN(obj[key])){
-            if(typeof obj[key] === 'object'){
-                stringifyNumbers(obj[key]);
-            }
+        if(typeof obj[key] === 'object'){
+            newObj[key] = stringifyNumbers(obj[key]);
         }else if(typeof obj[key] === 'number'){
-            obj[key] = obj[key].toString();
+            newObj[key] = obj[key].toString();
+        }else{
+            newObj[key] = obj[key];
         }
     }
 
-    return obj;
+    return newObj;
 }
 
 let obj = {
