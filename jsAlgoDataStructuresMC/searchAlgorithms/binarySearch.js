@@ -15,15 +15,15 @@
 // console.log(binarySearch([5, 6, 19, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 95)) //16
 // console.log(binarySearch([5, 6, 19, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 100)) //-1
 
+//original
 const binarySearch = (arr, val) => {
-    const findCenter = (left, right) => Math.round((right + left) / 2);
+    const findCenter = (left, right) => Math.floor((right + left) / 2);
 
     let left = 0;
     let right = arr.length - 1;
     let center = findCenter(left, right);
 
     while (left <= right){
-        center = findCenter(left, right);
         if(arr[center] === val){
             return center;
         }else if(arr[center] > val){
@@ -31,15 +31,24 @@ const binarySearch = (arr, val) => {
         }else{
             left = center + 1;
         }
+        center = findCenter(left, right);
     }
 
     return -1;
 }
 
-console.log(binarySearch([1, 2, 3, 4, 5], 2)) //1
-console.log(binarySearch([1, 2, 3, 4, 5], 3)) //2
-console.log(binarySearch([1, 2, 3, 4, 5], 5)) //4
-console.log(binarySearch([1, 2, 3, 4, 5], 6)) //-1
-console.log(binarySearch([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 10)) //2
-console.log(binarySearch([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 95)) //16
-console.log(binarySearch([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 100)) //-1
+//recursively
+const binarySearch2 = (arr, val, left = 0, right = arr.length - 1) => {
+    let middle = Math.floor((right + left) / 2);
+    if(left > right) return -1;
+    if(arr[middle] === val) return middle;
+    return arr[middle] > val ? binarySearch2(arr, val, left, middle - 1) : binarySearch2(arr, val, middle + 1, right);
+}
+
+console.log(binarySearch2([1, 2, 3, 4, 5], 2)) //1
+console.log(binarySearch2([1, 2, 3, 4, 5], 3)) //2
+console.log(binarySearch2([1, 2, 3, 4, 5], 5)) //4
+console.log(binarySearch2([1, 2, 3, 4, 5], 6)) //-1
+console.log(binarySearch2([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 10)) //2
+console.log(binarySearch2([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 95)) //16
+console.log(binarySearch2([5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98, 99], 100)) //-1
