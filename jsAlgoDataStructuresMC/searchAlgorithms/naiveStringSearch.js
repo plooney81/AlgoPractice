@@ -7,16 +7,8 @@ const naiveString = (longStr, shortStr) => {
 
     for(let outIndex = 0; outIndex < longStr.length; outIndex++){
         for(let innIndex = 0; innIndex < shortStr.length; innIndex++){
-            console.log(longStr[outIndex], shortStr[innIndex]);
-            if(longStr[outIndex] !== shortStr[innIndex]){
-                break;
-            }else{
-                if(innIndex == shortStr.length - 1){
-                    count++;
-                }else{
-                    outIndex++;
-                }
-            }
+            if(longStr[outIndex + innIndex] !== shortStr[innIndex]) break;
+            if(innIndex == shortStr.length - 1)count++;
         }
     }
     return count;
@@ -24,3 +16,4 @@ const naiveString = (longStr, shortStr) => {
 
 
 console.log(naiveString("wowomgzomg", "omg")); //2
+console.log(naiveString("lorie loled", "lol")); //1
