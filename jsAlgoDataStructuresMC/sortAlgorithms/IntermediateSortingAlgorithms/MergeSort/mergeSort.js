@@ -8,6 +8,7 @@
     //? * Once we exhaust one array, push in all remaining values from the other array.
 //console.log(merge([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
 
+//Original
 const merge = (arr1, arr2) => {
     let onePoint = 0;
     let twoPoint = 0;
@@ -31,9 +32,25 @@ const merge = (arr1, arr2) => {
     }
 }
 
-console.log(merge([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
+// console.log(merge([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
 
+//Recursively
+const merge2 = (arr1, arr2) => {
+    let mergedArray = [];
+    //base cases
+    if(arr1.length === 0) return mergedArray.concat(arr2.slice(0));
+    if(arr2.length === 0) return mergedArray.concat(arr1.slice(0));
+    if(arr1[0] < arr2[0]){
+        mergedArray.push(arr1[0])
+        mergedArray = mergedArray.concat(merge2(arr1.slice(1), arr2));
+    }else{
+        mergedArray.push(arr2[0])
+        mergedArray = mergedArray.concat(merge2(arr1, arr2.slice(1)));
+    }
+    return mergedArray;
+}
 
+console.log(merge2([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
 
 
 
