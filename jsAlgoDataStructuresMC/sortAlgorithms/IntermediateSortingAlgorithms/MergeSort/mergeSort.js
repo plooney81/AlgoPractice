@@ -14,14 +14,8 @@ const merge = (arr1, arr2) => {
     let twoPoint = 0;
     let mergedArray = [];
     while (onePoint < arr1.length || twoPoint < arr2.length){
-        if(onePoint === arr1.length){
-            mergedArray = mergedArray.concat(arr2.slice(twoPoint))
-            return mergedArray;
-        }
-        if(twoPoint === arr2.length){
-            mergedArray = mergedArray.concat(arr1.slice(onePoint))
-            return mergedArray;
-        }
+        if(onePoint === arr1.length) return mergedArray.concat(arr2.slice(twoPoint))
+        if(twoPoint === arr2.length) return mergedArray.concat(arr1.slice(onePoint))
         if(arr1[onePoint] < arr2[twoPoint]){
             mergedArray.push(arr1[onePoint]);
             onePoint++;
@@ -32,7 +26,7 @@ const merge = (arr1, arr2) => {
     }
 }
 
-// console.log(merge([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
+console.log(merge([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
 
 //Recursively
 const merge2 = (arr1, arr2) => {
@@ -50,7 +44,7 @@ const merge2 = (arr1, arr2) => {
     return mergedArray;
 }
 
-console.log(merge2([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
+// console.log(merge2([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
 
 
 
