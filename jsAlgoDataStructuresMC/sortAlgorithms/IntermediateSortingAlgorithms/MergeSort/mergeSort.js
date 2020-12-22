@@ -18,7 +18,7 @@ const merge = (arr1, arr2) => {
             return mergedArray;
         }
         if(twoPoint === arr2.length){
-            mergedArray = mergedArray.concat(arr2.slice(onePoint))
+            mergedArray = mergedArray.concat(arr1.slice(onePoint))
             return mergedArray;
         }
         if(arr1[onePoint] < arr2[twoPoint]){
@@ -29,7 +29,6 @@ const merge = (arr1, arr2) => {
             twoPoint++;
         }
     }
-    return mergedArray;
 }
 
 console.log(merge([1, 10, 50], [2, 14, 99, 100])); //[1, 2, 10, 14, 50, 99, 100]
