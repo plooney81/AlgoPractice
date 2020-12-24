@@ -5,18 +5,19 @@
 //? loops over the entire array:
     //? if the pivot is greater than the element, increment the pivot index variable, and then swap the element at the pivot index
 //? Swap starting element w/ the pivot index
+//? return the pivot index
 
 const pivot = (arr, start = 0, end = arr.length) => {
-    let pivotIndex = 0;
-    let pivotElement = arr[0];
+    let pivotIndex = start;
+    let pivotElement = arr[start];
     for(let i = start + 1; i < end; i++){
         if(pivotElement > arr[i]){
             pivotIndex++;
             [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
         }
     }
-    [arr[0], arr[pivotIndex]] = [arr[pivotIndex], arr[0]]
-    return arr;
+    [arr[start], arr[pivotIndex]] = [arr[pivotIndex], arr[start]]
+    return pivotIndex;
 }
 
 
