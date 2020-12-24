@@ -21,12 +21,15 @@ const pivot = (arr, start = 0, end = arr.length) => {
 }
 
 
+//* Sorting Functions - Quick Sort
+//? Call the pivot helper on the array
+//? When the helper returns to you the updated pivot index, recursively call 
+//? the pivot helper on the subarray to the left of the index, and the subarray to the right of the index
+//? Your base case occurs when you consider a subarray with less than 2 elements.
+
 const quickSort = (arr) => {
-    // if(arr.length <= 1) return arr;
-    // let half = Math.floor((arr.length) / 2);
-    // let left = mergeSort(arr.slice(0, half));
-    // let right = mergeSort(arr.slice(half));
-    // return merge(left, right);
+    let pivotIndex = pivot(arr);
+    
 }
 
 console.log(pivot([5, 2, 1, 8, 4, 7, 6, 3]));
