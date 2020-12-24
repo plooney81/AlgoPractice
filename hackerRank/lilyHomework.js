@@ -20,13 +20,11 @@ const pivot = (arr, start = 0, end = arr.length - 1) => {
 const lilysHomework = (arr, left = 0, right = arr.length - 1, swaps = 0) => {
     if(left < right){
         let pivotIndex = pivot(arr, left, right);
-        swaps = pivotIndex;
         //left
-        lilysHomework(arr, left, pivotIndex - 1, swaps);
+        lilysHomework(arr, left, pivotIndex - 1, pivotIndex > swaps ? pivotIndex : swaps);
         //right
-        lilysHomework(arr, pivotIndex+1, right, swaps);
+        lilysHomework(arr, pivotIndex+1, right, pivotIndex > swaps ? pivotIndex : swaps);
     }
-
     return swaps;
 }
 
