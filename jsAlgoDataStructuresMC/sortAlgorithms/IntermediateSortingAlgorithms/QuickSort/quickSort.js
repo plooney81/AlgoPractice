@@ -27,9 +27,13 @@ const pivot = (arr, start = 0, end = arr.length) => {
 //? the pivot helper on the subarray to the left of the index, and the subarray to the right of the index
 //? Your base case occurs when you consider a subarray with less than 2 elements.
 
-const quickSort = (arr) => {
-    let pivotIndex = pivot(arr);
-    
+const quickSort = (arr, left = 0, right = arr.length) => {
+    if(left < right){
+        let pivotIndex = pivot(arr, left, right);
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    } 
+    return arr;
 }
 
-console.log(pivot([5, 2, 1, 8, 4, 7, 6, 3]));
+console.log(quickSort([5, 2, 1, 8, 4, 7, 6, 3]));
