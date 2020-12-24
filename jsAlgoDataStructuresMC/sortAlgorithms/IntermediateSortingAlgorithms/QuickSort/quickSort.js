@@ -11,7 +11,7 @@ const pivot = (arr, start = 0, end = arr.length - 1) => {
     let pivotIndex = start;
     let pivotElement = arr[start];
     for(let i = start + 1; i <= end; i++){
-        if(parseInt(pivotElement) > parseInt(arr[i])){
+        if(pivotElement > arr[i]){
             pivotIndex++;
             [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
         }
@@ -36,4 +36,4 @@ const quickSort = (arr, left = 0, right = arr.length - 1) => {
     return arr;
 }
 
-console.log(quickSort(['31415926535897', '1', '3', '10', '3', '5']));
+console.log(quickSort([100, 10, 9, -3, 0, 5]));
