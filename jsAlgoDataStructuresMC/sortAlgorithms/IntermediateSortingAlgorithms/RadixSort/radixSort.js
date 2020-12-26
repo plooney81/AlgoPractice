@@ -10,5 +10,5 @@ const getDigit = (num, place) => {
 }
 // Math way
 const getDigit2 = (num, place) => {
-    return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+    return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
 }
