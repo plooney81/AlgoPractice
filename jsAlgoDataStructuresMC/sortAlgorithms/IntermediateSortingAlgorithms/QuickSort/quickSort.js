@@ -12,8 +12,8 @@ const pivot = (arr, start = 0, end = arr.length - 1) => {
     let pivotElement = arr[start];
     for(let i = start + 1; i <= end; i++){
         if(pivotElement > arr[i]){
-            pivotIndex++;
-            [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+            pivotIndex++; //iterates the pivot index
+            [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]]; //swaps the current element with the element at the current pivot index
         }
     }
     [arr[start], arr[pivotIndex]] = [arr[pivotIndex], arr[start]]
