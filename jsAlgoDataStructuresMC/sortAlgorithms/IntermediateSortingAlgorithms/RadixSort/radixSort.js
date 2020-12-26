@@ -33,10 +33,7 @@ const digitCount2 = (num) => num === 0 ? 1 : Math.floor(Math.log10(Math.abs(num)
 const mostDigits = (arr) => {
     let maxDigit = 0;
     arr.forEach(num => {
-        if(digitCount(num) > maxDigit){
-            maxDigit = digitCount(num)
-        }
+        maxDigit = Math.max(maxDigit, digitCount(num));
     })
-
     return maxDigit;
 }
