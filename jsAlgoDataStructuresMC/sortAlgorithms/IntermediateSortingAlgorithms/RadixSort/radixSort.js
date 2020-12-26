@@ -56,7 +56,7 @@ const radixSort = (arr) => {
         arr.forEach(num => {
             buckets[getDigit2(num, i)].push(num);
         })
-        arr = buckets[0].concat(buckets[1], buckets[2], buckets[3], buckets[4], buckets[5], buckets[6], buckets[7], buckets[8], buckets[9])
+        arr = [].concat(...buckets);
     }
     return arr;
 }
