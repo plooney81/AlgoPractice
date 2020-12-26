@@ -22,3 +22,21 @@ const getDigit2 = (num, place) => {
 const digitCount = (num) => num.toString().length; 
 //Math way
 const digitCount2 = (num) => num === 0 ? 1 : Math.floor(Math.log10(Math.abs(num))) + 1;
+
+
+//* Radix Sort Helper Functions - mostDigits
+//? this function returns the number of digits in the largest numbers of the inputted list
+// mostDigits([1234, 56, 7]) //4
+// mostDigits([1, 1, 11111, 1]) //5
+// mostDigits([12, 34, 56, 78]) //2
+
+const mostDigits = (arr) => {
+    let maxDigit = 0;
+    arr.forEach(num => {
+        if(digitCount(num) > maxDigit){
+            maxDigit = digitCount(num)
+        }
+    })
+
+    return maxDigit;
+}
