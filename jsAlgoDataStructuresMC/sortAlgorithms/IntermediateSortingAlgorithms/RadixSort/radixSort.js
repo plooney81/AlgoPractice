@@ -37,3 +37,30 @@ const mostDigits = (arr) => {
     })
     return maxDigit;
 }
+
+
+//* Sorting Functions - Radix Sort
+//? Define a function that accepts list of numbers
+//? Figure out how many digits the largest number has
+//? Loop from k = 0 up to this largest # of digits
+//? For each iteration:
+    //? Create buckets for each digit (0 to 9)
+    //? place each number in the corresponding bucket based on its kth digit
+//? Replace our existing array with values in our buckets, starting with 0 and going up to 9
+//? Return list
+
+const radixSort = (arr) => {
+    const end = mostDigits(arr);
+    for(let i = 0; i < end; i++){
+        let buckets = [[], [], [], [], [], [], [], [], [], []];
+        arr.forEach(num => {
+            let indexArray = buckets[getDigit2(num, i)];
+            indexArray.push(num);
+            buckets[getDigit2(num, i)] = indexArray;
+        })
+        arr = buckets[0].concat(buckets[1]).concat(buckets[2]).concat(buckets[3]).concat(buckets[4]).concat(buckets[5]).concat(buckets[6]).concat(buckets[7]).concat(buckets[8]).concat(buckets[9])
+    }
+    return arr;
+}
+
+console.log(radixSort([123, 3, 1, 23, 4]))
