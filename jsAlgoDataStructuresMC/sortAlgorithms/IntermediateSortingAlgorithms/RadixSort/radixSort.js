@@ -12,3 +12,13 @@ const getDigit = (num, place) => {
 const getDigit2 = (num, place) => {
     return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
 }
+
+//* Radix Sort Helper Functions - digitCount
+//? this function returns the number of digits that are in the number given
+// digitCount(1); //1
+// digitCount(24); //2
+// digitCount(234); //3
+
+const digitCount = (num) => num.toString().length; 
+//Math way
+const digitCount2 = (num) => num === 0 ? 1 : Math.floor(Math.log10(Math.abs(num))) + 1;
