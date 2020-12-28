@@ -1,7 +1,7 @@
 //* Sorting Algorithms - Counting Sort
 
 const countingSort = (arr) => {
-    let minElement = 100;
+    let minElement = Infinity;
     let maxElement = 0;
     //find the min/max element in the array;
     arr.forEach(num => {
@@ -31,4 +31,4 @@ const countingSort = (arr) => {
     return outputArray;
 }
 
-console.log(countingSort([3, 1, 1, 1, 6, 4]));
+console.log(countingSort([19, 10, 12, 10, 24, 25, 22]));
