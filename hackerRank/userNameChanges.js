@@ -8,7 +8,7 @@ const possibleChanges = (usernames) => {
         let right = usernames[i].length - 1;
         while(left < right){
             if(usernames[i].charCodeAt(left) > usernames[i].charCodeAt(right)){
-                answerArray[i] = 'Yes';
+                answerArray[i] = 'YES';
                 left = right;
             }else if(left > 0){
                 left--;
