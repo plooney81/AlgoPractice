@@ -28,6 +28,7 @@ class SinglyLinkedList{
     //? Find the node before the tail, set that equal to the new tail.
     //? Set the new tails.next=null;
     //? Decrement the length by 1;
+    //? If we pop the last element, set head and tail = null
     pop(){
         if(!this.head) return undefined;
         let oldTail = this.tail;
