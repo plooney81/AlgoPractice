@@ -45,11 +45,22 @@ class SinglyLinkedList{
     }
 }
 
+const fib = (n) => {
+    arr = [];
+    for(let i = 0; i < n; i++){
+        i <= 1 ? arr.push(i) : arr.push(arr[i - 1] + arr[i - 2]);
+    }
+    return arr[n-1];
+}
+console.log(fib(4))
+console.log(fib(8))
+
+
 const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-console.log(list.pop());
+// console.log(list.pop());
 
 
 
