@@ -34,8 +34,8 @@ class SinglyLinkedList{
         let current = this.head;
         let previous = null;
         //finds the next to last node..saves it into the previous variable
-        while(current){
-            if(current.next) previous = current;
+        while(current.next){
+            previous = current;
             current = current.next;
         }
         previous.next = null;
@@ -45,22 +45,12 @@ class SinglyLinkedList{
     }
 }
 
-const fib = (n) => {
-    arr = [];
-    for(let i = 0; i < n; i++){
-        i <= 1 ? arr.push(i) : arr.push(arr[i - 1] + arr[i - 2]);
-    }
-    return arr[n-1];
-}
-console.log(fib(4))
-console.log(fib(8))
-
-
 const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-// console.log(list.pop());
+console.log(list.pop());
+console.log(list);
 
 
 
