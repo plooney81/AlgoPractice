@@ -48,17 +48,33 @@ class SinglyLinkedList{
         }
         return oldTail;
     }
+    //* Shift Method PseudoCode
+    //? Takes current head.next and sets that one to be the new head
+    //? Returns the oldHead;
+    shift(){
+        const oldHead = this.head;
+        this.head = oldHead.next;
+        this.length--;
+        return oldHead.val;
+    }
+
+    //* Unshift Method PseudoCode:
+    //? Sets new node to be the head
+    //? New node.next = oldHead
+    unshift(val){
+        const newNode = new Node(val);
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-console.log(list.pop());
+console.log(list.shift());
 console.log(list);
 
-console.log(list.pop());
-console.log(list);
-console.log(list.pop());
-console.log(list);
 
