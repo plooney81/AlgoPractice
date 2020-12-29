@@ -4,10 +4,14 @@ class Student{
         this.lastName = lastName;
         this.grade = year;
     }
+
+    outputName(){
+        console.log(`Your name is ${this.firstName} ${this.lastName}`);
+    }
 }
 
 let studentOne = new Student('Pete', 'Looney', 10);
 let studentTwo = new Student('Blah', 'Blarg', 0);
 
-console.log(studentOne);
-console.log(studentTwo);
+studentOne.outputName();
+studentTwo.outputName();
