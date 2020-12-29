@@ -61,4 +61,4 @@ const radixSort = (arr) => {
     return arr;
 }
 
-console.log(radixSort([123, 3, 1, 23, 4]))
+console.log(radixSort([-123, 3, 1, 23, 4]))
