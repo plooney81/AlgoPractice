@@ -15,12 +15,8 @@ class SinglyLinkedList{
     //if the list is empty, set the head and the tail to point
     //otherwise, set the next property on the tail to be the new node and set the tail property on the list to be the newly created node.
     push(val){
-        let node = new Node(val);
-        if(this.length === 0){
-            this.head = node;
-        }else{
-            this.tail.next = node;
-        }
+        const node = new Node(val);
+        this.length === 0 ? this.head = node : this.tail.next = node;
         this.tail = node;
         this.length += 1;
     }
@@ -29,7 +25,8 @@ class SinglyLinkedList{
 let list = new SinglyLinkedList();
 list.push('Hey');
 list.push('Hi');
-console.log(list.head.next.val);
+console.log(list.head);
+console.log(list.tail);
 
 // var first = new Node("Hi");
 // first.next = new Node("there");
