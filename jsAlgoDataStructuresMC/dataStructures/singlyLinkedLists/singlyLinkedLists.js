@@ -32,7 +32,7 @@ class SinglyLinkedList{
         if(!this.head) return undefined;
         let oldTail = this.tail;
         let current = this.head;
-        let previous = null;
+        let previous = this.head;
         //finds the next to last node..saves it into the previous variable
         while(current.next){
             previous = current;
@@ -41,6 +41,10 @@ class SinglyLinkedList{
         previous.next = null;
         this.tail = previous;
         this.length -= 1;
+        if(this.length === 0){
+            this.head = null;
+            this.tail = null;
+        }
         return oldTail;
     }
 }
@@ -52,5 +56,8 @@ list.push('Hello')
 console.log(list.pop());
 console.log(list);
 
-
+console.log(list.pop());
+console.log(list);
+console.log(list.pop());
+console.log(list);
 
