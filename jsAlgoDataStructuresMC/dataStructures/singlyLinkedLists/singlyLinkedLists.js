@@ -11,31 +11,45 @@ class SinglyLinkedList{
         this.tail = null;
         this.length = 0;
     }
-    //Create a new node using the value passed in
-    //if the list is empty, set the head and the tail to point
-    //otherwise, set the next property on the tail to be the new node and set the tail property on the list to be the newly created node.
+    //* Push Method PseudoCode:
+    //? Create a new node using the value passed in
+    //? if the list is empty, set the head and the tail to point
+    //? otherwise, set the next property on the tail to be the new node and set the tail property on the list to be the newly created node.
+    //? update length
+    //? return the list
     push(val){
         const node = new Node(val);
-        this.length === 0 ? this.head = node : this.tail.next = node;
+        !this.head ? this.head = node : this.tail.next = node;
         this.tail = node;
         this.length += 1;
+        return this;
+    }
+    //* Pop Method PseudoCode:
+    //? Find the node before the tail, set that equal to the new tail.
+    //? Set the new tails.next=null;
+    //? Decrement the length by 1;
+    pop(){
+        if(!this.head) return undefined;
+        let oldTail = this.tail;
+        let current = this.head;
+        let previous = null;
+        //finds the next to last node..saves it into the previous variable
+        while(current){
+            if(current.next) previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        this.tail = previous;
+        this.length -= 1;
+        return oldTail;
     }
 }
 
-let list = new SinglyLinkedList();
-list.push('Hey');
-list.push('Hi');
-console.log(list.head);
-console.log(list.tail);
+const list = new SinglyLinkedList();
+list.push('Hey')
+list.push('Hi')
+list.push('Hello')
+console.log(list.pop());
 
-// var first = new Node("Hi");
-// first.next = new Node("there");
-// first.next.next = new Node("how");
-// first.next.next.next = new Node("are");
-// first.next.next.next.next = new Node("you");
 
-// console.log(first.val);
-// console.log(first.next.val);
-// console.log(first.next.next.val);
-// console.log(first.next.next.next.val);
-// console.log(first.next.next.next.next.val);
+
