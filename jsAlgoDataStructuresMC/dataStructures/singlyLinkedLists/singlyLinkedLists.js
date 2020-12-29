@@ -52,9 +52,13 @@ class SinglyLinkedList{
     //? Takes current head.next and sets that one to be the new head
     //? Returns the oldHead;
     shift(){
+        if(!this.head) return undefined;
         const oldHead = this.head;
         this.head = oldHead.next;
         this.length--;
+        if(this.length === 0){
+            this.tail = null;
+        }
         return oldHead.val;
     }
 
@@ -63,6 +67,7 @@ class SinglyLinkedList{
     //? New node.next = oldHead
     unshift(val){
         const newNode = new Node(val);
+        if(!this.head) this.tail = newNode;
         newNode.next = this.head;
         this.head = newNode;
         this.length++;
@@ -71,10 +76,16 @@ class SinglyLinkedList{
 }
 
 const list = new SinglyLinkedList();
-list.push('Hey')
-list.push('Hi')
-list.push('Hello')
-console.log(list.shift());
+list.unshift('Hey');
 console.log(list);
+// list.push('Hey')
+// list.push('Hi')
+// list.push('Hello')
+// console.log(list.shift());
+// console.log(list);
+// console.log(list.shift());
+// console.log(list);
+// console.log(list.shift());
+// console.log(list);
 
 
