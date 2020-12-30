@@ -88,13 +88,28 @@ class SinglyLinkedList{
         }
         return current;
     }
+    //* Set Method PseudoCode:
+    //?
+    set(newVal, index){
+        if(index < 0 || index >= this.length) return undefined;
+        let count = 0;
+        let current = this.head;
+        while(count < index){
+            current = current.next;
+            count++;
+        }
+        current.val = newVal;
+        return current;
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-console.log(list.get(3));
+console.log(list.get(2));
+console.log(list.set('SUP', 2));
+console.log(list);
 
 // console.log(list.shift());
 // console.log(list);
