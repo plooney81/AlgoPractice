@@ -89,16 +89,12 @@ class SinglyLinkedList{
         return current;
     }
     //* Set Method PseudoCode:
-    //?
+    //? should accept a value and an index
+    //? Use the get function from above to find a node at the index
+    //? If the node is not found, return false.
     set(newVal, index){
-        if(index < 0 || index >= this.length) return undefined;
-        let count = 0;
-        let current = this.head;
-        while(count < index){
-            current = current.next;
-            count++;
-        }
-        current.val = newVal;
+        let current = this.get(index);
+        current ? current.val = newVal : current = false;
         return current;
     }
 }
@@ -107,9 +103,10 @@ const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-console.log(list.get(2));
-console.log(list.set('SUP', 2));
-console.log(list);
+// console.log(list.get(2));
+console.log(list.set('SUP', 3));
+console.log(list.set('YOOOOO', 2));
+// console.log(list);
 
 // console.log(list.shift());
 // console.log(list);
