@@ -73,14 +73,29 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
+
+    //* Get Method PseudoCode:
+    //? Accepts an index
+    //? If index is less than zero or greater than or equal to the length of the list, return null or undefined
+    //? Loop through the list until you reach the index and return the node at that specific index.
+    get(index){
+        if(index < 0 || index >= this.length) return undefined;
+        let count = 0;
+        let current = this.head;
+        while (count < index){
+            current = current.next;
+            count++;
+        }
+        return current;
+    }
 }
 
 const list = new SinglyLinkedList();
-list.unshift('Hey');
-console.log(list);
-// list.push('Hey')
-// list.push('Hi')
-// list.push('Hello')
+list.push('Hey')
+list.push('Hi')
+list.push('Hello')
+console.log(list.get(3));
+
 // console.log(list.shift());
 // console.log(list);
 // console.log(list.shift());
