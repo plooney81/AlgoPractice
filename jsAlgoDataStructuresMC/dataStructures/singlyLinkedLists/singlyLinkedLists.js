@@ -97,15 +97,32 @@ class SinglyLinkedList{
         current ? current.val = newVal : current = false;
         return current;
     }
+    //* Insert Method PseudoCode:
+    //? 
+    insert(val, index){
+        if(index < 0 || index > this.length) return undefined;
+        if(index === 0) return this.unshift(val);
+        if(index === this.length) return this.push(val);
+        const newNode = new Node(val);
+        let current = this.get(index);
+        let previous = this.get(index - 1);
+        previous.next = newNode;
+        newNode.next = (current) ? current : null;
+        this.length++;
+        return this;
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
+list.insert('YOOO', 3);
+console.log(list);
+
 // console.log(list.get(2));
-console.log(list.set('SUP', 3));
-console.log(list.set('YOOOOO', 2));
+// console.log(list.set('SUP', 3));
+// console.log(list.set('YOOOOO', 2));
 // console.log(list);
 
 // console.log(list.shift());
