@@ -95,7 +95,7 @@ class SinglyLinkedList{
     set(newVal, index){
         let current = this.get(index);
         current ? current.val = newVal : current = false;
-        return current;
+        return true;
     }
     //* Insert Method PseudoCode:
     //? If index is less than zero or greater than the length --> return false
@@ -105,18 +105,19 @@ class SinglyLinkedList{
     //? Save the .next node of that index - 1 node in a variable named current
     //? Then set the next propery of the index - 1 node equal to the our new node
     //? Save the .nxt property of our new Node to the current
-    //? Increment the length and return the list.
+    //? Increment the length and return true.
     insert(val, index){
         if(index < 0 || index > this.length) return false;
-        if(index === 0) return this.unshift(val);
-        if(index === this.length) return this.push(val);
+        // the !! will return true or false for the method returns...instead of returning the list like these methods are trying to do
+        if(index === 0) return !!this.unshift(val);
+        if(index === this.length) return !!this.push(val);
         const newNode = new Node(val);
         let previous = this.get(index - 1);
         let current = previous.next;
         previous.next = newNode;
         newNode.next = (current) ? current : null;
         this.length++;
-        return this;
+        return true;
     }
 }
 
@@ -124,7 +125,7 @@ const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-list.insert('YOOO', 2);
+console.log(list.insert('YOOO', 0));
 console.log(list.get(2));
 
 
