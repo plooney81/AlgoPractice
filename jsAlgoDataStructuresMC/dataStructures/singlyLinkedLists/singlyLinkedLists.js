@@ -98,14 +98,21 @@ class SinglyLinkedList{
         return current;
     }
     //* Insert Method PseudoCode:
-    //? 
+    //? If index is less than zero or greater than the length --> return false
+    //? If the index is zero --> just use unshift
+    //? If the index is the length --> just use push
+    //? Else, get the node at the index - 1;
+    //? Save the .next node of that index - 1 node in a variable named current
+    //? Then set the next propery of the index - 1 node equal to the our new node
+    //? Save the .nxt property of our new Node to the current
+    //? Increment the length and return the list.
     insert(val, index){
-        if(index < 0 || index > this.length) return undefined;
+        if(index < 0 || index > this.length) return false;
         if(index === 0) return this.unshift(val);
         if(index === this.length) return this.push(val);
         const newNode = new Node(val);
-        let current = this.get(index);
         let previous = this.get(index - 1);
+        let current = previous.next;
         previous.next = newNode;
         newNode.next = (current) ? current : null;
         this.length++;
@@ -117,8 +124,9 @@ const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-list.insert('YOOO', 3);
-console.log(list);
+list.insert('YOOO', 2);
+console.log(list.get(2));
+
 
 // console.log(list.get(2));
 // console.log(list.set('SUP', 3));
