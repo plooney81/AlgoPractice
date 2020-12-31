@@ -119,6 +119,13 @@ class SinglyLinkedList{
         this.length++;
         return true;
     }
+    //* Remove Method PseudoCode:
+    //? If the index is less than zero or greater than the length --> return false
+    //? If the index is zero --> just use shift
+    //? if the index is the length --> just use pop
+    //? Otherwise, get the node at index - 1
+    //? Get the .next value for the index you are deleting
+    //? Set the .next for index - 1 equal to the .next value for the node you are "deleting"
 }
 
 const list = new SinglyLinkedList();
