@@ -137,16 +137,35 @@ class SinglyLinkedList{
         this.length--;
         return current;
     }
+    //* Reverse Method PseudoCode:
+    //? 
+    reverse(){
+        let oldHead = this.head;
+        let oldTail = this.tail;
+        let current = oldHead;
+        let previous = null;
+        while(current){
+            let temp = current.next;
+            current.next = previous;
+            previous = current;
+            current = temp;
+        }
+        this.head = oldTail;
+        this.tail = oldHead;
+    }
 }
 
 const list = new SinglyLinkedList();
-list.push('Hey')
-list.push('Hi')
-list.push('Hello')
+list.push('Hey');
+list.push('Hi');
+list.push('Hello');
+list.push('WHADDDDDDUP');
 // console.log(list.insert('YOOO', 0));
-console.log(list.remove(1));
+// console.log(list.remove(1));
 // console.log(list.get(1));
+list.reverse();
 console.log(list);
+console.log(list.get(2))
 
 
 // console.log(list.get(2));
