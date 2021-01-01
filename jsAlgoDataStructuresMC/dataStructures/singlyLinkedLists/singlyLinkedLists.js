@@ -59,7 +59,7 @@ class SinglyLinkedList{
         if(this.length === 0){
             this.tail = null;
         }
-        return oldHead.val;
+        return oldHead;
     }
 
     //* Unshift Method PseudoCode:
@@ -120,22 +120,22 @@ class SinglyLinkedList{
         return true;
     }
     //* Remove Method PseudoCode:
-    //? If the index is less than zero or greater than the length --> return false
+    //? If the index is less than zero or greater than or equal to the length --> return undefined
     //? If the index is zero --> just use shift
     //? if the index is the length --> just use pop
     //? Otherwise, get the node at index - 1
     //? Get the .next value for the index you are deleting
     //? Set the .next for index - 1 equal to the .next value for the node you are "deleting"
-    //? subtract one from the length and then return true;
+    //? subtract one from the length and then return the value of the removed node;
     remove(index){
-        if(index < 0 || index > this.length) return false;
-        if(index === 0) return !!this.shift();
-        if(index === this.length) return !!this.pop();
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
         let previous = this.get(index - 1);
         let current = previous.next;
         previous.next = current.next;
         this.length--;
-        return true;
+        return current;
     }
 }
 
@@ -145,7 +145,7 @@ list.push('Hi')
 list.push('Hello')
 // console.log(list.insert('YOOO', 0));
 console.log(list.remove(1));
-console.log(list.get(1));
+// console.log(list.get(1));
 console.log(list);
 
 
