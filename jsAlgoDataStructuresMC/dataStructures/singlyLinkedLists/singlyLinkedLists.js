@@ -138,11 +138,17 @@ class SinglyLinkedList{
         return current;
     }
     //* Reverse Method PseudoCode:
-    //? 
+    //? Swap the head and the tail
+    //? Create a var called previous (init at null) and current(init at the oldheadVar)
+    //? loop through the list
+    //? Set a temp var equal to current.next
+    //? Set current.next to be the previous var (if the tail, then it will save null cuz we initialized previous to null)
+    //? Assign current to the previous variable (so we have for the next iteration)
+    //? Finally, save the temp information as the current (so we keep iterating through the list);
     reverse(){
-        let oldHead = this.head;
-        let oldTail = this.tail;
-        let current = oldHead;
+        let current = this.head;
+        this.head = this.tail;
+        this.tail = current;
         let previous = null;
         while(current){
             let temp = current.next;
@@ -150,8 +156,7 @@ class SinglyLinkedList{
             previous = current;
             current = temp;
         }
-        this.head = oldTail;
-        this.tail = oldHead;
+        return this;
     }
 }
 
@@ -164,8 +169,9 @@ list.push('WHADDDDDDUP');
 // console.log(list.remove(1));
 // console.log(list.get(1));
 list.reverse();
-console.log(list);
-console.log(list.get(2))
+// console.log(list);
+// console.log(list.get(2))
+console.log(list.get(0));
 
 
 // console.log(list.get(2));
