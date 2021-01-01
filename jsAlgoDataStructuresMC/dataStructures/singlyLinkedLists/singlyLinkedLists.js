@@ -126,14 +126,27 @@ class SinglyLinkedList{
     //? Otherwise, get the node at index - 1
     //? Get the .next value for the index you are deleting
     //? Set the .next for index - 1 equal to the .next value for the node you are "deleting"
+    //? subtract one from the length and then return true;
+    remove(index){
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) return !!this.shift();
+        if(index === this.length) return !!this.pop();
+        let previous = this.get(index - 1);
+        let current = previous.next;
+        previous.next = current.next;
+        this.length--;
+        return true;
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push('Hey')
 list.push('Hi')
 list.push('Hello')
-console.log(list.insert('YOOO', 0));
-console.log(list.get(2));
+// console.log(list.insert('YOOO', 0));
+console.log(list.remove(1));
+console.log(list.get(1));
+console.log(list);
 
 
 // console.log(list.get(2));
