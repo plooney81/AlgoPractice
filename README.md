@@ -11,6 +11,9 @@
     - [**Different Types Of Recursive Functions**](#different-types-of-recursive-functions)
     - [**Examples**](#examples)
   - [**Searching Algorithms**](#searching-algorithms)
+    - [**Binary Search**](#binary-search)
+    - [**Linear Search**](#linear-search)
+    - [**Naive String Search**](#naive-string-search)
 
 
 ## **General**
@@ -92,3 +95,9 @@ Enjoy!!
 - If you are looking for more of a challenge, check these [examples](https://github.com/plooney81/AlgoPractice/tree/master/jsAlgoDataStructuresMC/recursion/moreChallengingProblemSet) out
 
 ### **Searching Algorithms**
+
+#### **Binary Search**
+
+#### **Linear Search**
+
+#### **Naive String Search**
