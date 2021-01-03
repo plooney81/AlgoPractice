@@ -80,14 +80,16 @@ class DoublyLinkedList{
     //? newNode = this.head
     //? newNode.next = oldHead
     //? oldHead previous is now the newNode
-    //? Add one to the length
-    //? If no elements in the list already, just call the push method
+    //? Increment length and return the list
+    //? If no elements in the list already, newNode is the tail and the head
     unshift(val){
-        if(this.length === 0) return this.push(val);
         const newNode = new Node(val);
-        const oldHead = this.head;
-        newNode.next = oldHead;
-        oldHead.previous = newNode;
+        if(this.length === 0) {
+            this.tail = newNode;
+        }else{
+            this.head.previous = newNode;
+            newNode.next = this.head;
+        }
         this.head = newNode;
         this.length++;
         return this;
@@ -96,9 +98,11 @@ class DoublyLinkedList{
 
 const list = new DoublyLinkedList();
 // console.log(list);
-list.push(4);
-list.push(12);
-list.push(24);
-list.push(36);
+// list.push(4);
+// list.push(12);
+// list.push(24);
+// list.push(36);
 list.unshift(100);
-console.log(list);
+list.push(200);
+list.unshift(50);
+// console.log(list);
