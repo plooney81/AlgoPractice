@@ -129,6 +129,31 @@ class DoublyLinkedList{
         if(node) node.val = val;
         return !!node;
     }
+    //* Insert Method PseudoCode:
+    //? Takes an index and a value
+    //? Create a new node called newNode
+    //? If the index is < 0 or > this.length return false
+    //? If index = 0 --> Use Unshift
+    //? If index = this.length --> Use push
+    //? Else get the node at the index and save in a var called oldNode
+    //? set newNode.prev = oldNode.previous
+    //? set oldNode.prev = newNode
+    //? set newNode.next = oldNode
+    //? Increment length and return true
+    insert(index, val){
+        const newNode = new Node(val);
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) return !!this.unshift(val);
+        if(index === this.length) return !!this.push(val);
+        const oldNode = this.get(index);
+        const prev = oldNode.previous;
+        newNode.previous = prev;
+        oldNode.previous = newNode;
+        newNode.next = oldNode;
+        prev.next = newNode;
+        this.length++;
+        return true;
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -137,6 +162,8 @@ list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
+list.insert(1, 100);
+console.log(list);
 // console.log(list.set(-1, 500));
 // console.log(list);
 // list.unshift(100);
