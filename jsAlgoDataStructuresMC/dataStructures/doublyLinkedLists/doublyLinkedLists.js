@@ -27,7 +27,7 @@ class DoublyLinkedList{
             this.tail.next = node;
         } 
         this.tail = node;
-        this.length += 1;
+        this.length++;
         return this;
     }
     //* Pop Method PseudoCode:
@@ -37,6 +37,7 @@ class DoublyLinkedList{
     //? Decrement the length
     //? OldTail.previous = the new tail...I.E. we make the value at old tail - 1 the new tail
     //? Update the oldTail previous property equal to null to completely sever the connection.
+    //! Don't want "Lingering Connections"...so we sever them completely^
     pop(){
         if(this.length === 0) return undefined;
         const oldTail = this.tail;
@@ -46,22 +47,31 @@ class DoublyLinkedList{
         }else{
             this.tail = oldTail.previous;
             this.tail.next = null;
+            oldTail.previous = null;
         }
-        oldTail.previous = null;
         this.length--;
         return oldTail;
     }
     //* Shift Method PseudoCode:
     //? Removes a node from the beginning of the list
+    //? if the list is empty, returns undefined
+    //? if the list only has one item, makes head and tail equal to null because the list is now empty
     //? Takes the head.next and makes that the new head
     //? New head.prev is now null
+    //? Oldhead.next is now null (severs the connection completely so we don't get Lingering Connections)
     //? Subtracts one from the length
     //? Returns the oldHead;
     shift(){
         if(this.length === 0) return undefined;
         const oldHead = this.head;
-        this.head = oldHead.next;
-        this.head.previous = null;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        }else{
+            this.head = oldHead.next;
+            this.head.previous = null;
+            oldHead.next = null; //? Severs completely
+        }
         this.length--;
         return oldHead;
     }
@@ -91,6 +101,4 @@ list.push(12);
 list.push(24);
 list.push(36);
 list.unshift(100);
-console.log(list.pop());
-// console.log(list);
 console.log(list);
