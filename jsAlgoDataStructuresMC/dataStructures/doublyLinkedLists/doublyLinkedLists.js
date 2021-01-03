@@ -41,6 +41,20 @@ class DoublyLinkedList{
         this.length--;
         return oldTail;
     }
+    //* Shift Method PseudoCode:
+    //? Removes a node from the beginning of the list
+    //? Takes the head.next and makes that the new head
+    //? New head.prev is now null
+    //? Subtracts one from the length
+    //? Returns the oldHead;
+    shift(){
+        if(this.length === 0) return undefined;
+        const oldHead = this.head;
+        this.head = oldHead.next;
+        this.head.previous = null;
+        this.length--;
+        return oldHead;
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -49,7 +63,9 @@ list.push(12);
 list.push(24);
 list.push(36);
 list.push(48);
+console.log(list.shift());
+console.log(list);
 // console.log(list);
-console.log(list.tail.previous)
+// console.log(list.tail.previous)
 // console.log(list.pop());
 // console.log(list);
