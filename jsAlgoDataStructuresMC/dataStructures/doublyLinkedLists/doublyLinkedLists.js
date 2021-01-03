@@ -55,17 +55,32 @@ class DoublyLinkedList{
         this.length--;
         return oldHead;
     }
+    //* Unshift Method PseudoCode:
+    //? Adds a new node to the beginning of the list
+    //? newNode = this.head
+    //? newNode.next = oldHead
+    //? oldHead previous is now the newNode
+    //? Add one to the length
+    //? If no elements in the list already, just call the push method
+    unshift(val){
+        if(this.length === 0) return this.push(val);
+        const newNode = new Node(val);
+        const oldHead = this.head;
+        newNode.next = oldHead;
+        oldHead.previous = newNode;
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
 }
 
 const list = new DoublyLinkedList();
+// console.log(list);
 list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
+list.unshift(100);
 list.push(48);
-console.log(list.shift());
-console.log(list);
 // console.log(list);
-// console.log(list.tail.previous)
-// console.log(list.pop());
-// console.log(list);
+console.log(list.head.next);
