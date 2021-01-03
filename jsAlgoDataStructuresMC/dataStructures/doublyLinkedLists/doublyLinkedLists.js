@@ -97,20 +97,20 @@ class DoublyLinkedList{
     //* Get Method PseudoCode:
     //? Decide whether its quicker to start at the beginning and work to the end OR...
     //?     Start at the end and work towards the beginning
-    //? Either way will return the value at the specified index
+    //? Either way will return the node at the specified index
     get(index){
         if(index < 0 || index >= this.length) return undefined;
-        let current;
-        if((this.length - 1 - index) < index){
+        let current, count;
+        if(index >= (this.length - 1) / 2){
             current = this.tail;
-            let count = this.length - 1;
+            count = this.length - 1;
             while(count > index){
                 current = current.previous;
                 count--;
             }
         }else{
             current = this.head;
-            let count = 0;
+            count = 0;
             while(count < index){
                 current = current.next;
                 count++;
@@ -137,8 +137,8 @@ list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
-console.log(list.set(-1, 500));
-console.log(list);
+// console.log(list.set(-1, 500));
+// console.log(list);
 // list.unshift(100);
 // list.push(200);
 // list.unshift(50);
