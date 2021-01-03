@@ -32,14 +32,22 @@ class DoublyLinkedList{
     }
     //* Pop Method PseudoCode:
     //? If there isn't anything in the list, return undefined or false or null
+    //? If the length is one, make head and tail of the list to be empty
     //? Grabs the current tail from the list and pops it (or removes) from the list and returns the node from the method
-    //? Subtracts one from the length
+    //? Decrement the length
     //? OldTail.previous = the new tail...I.E. we make the value at old tail - 1 the new tail
+    //? Update the oldTail previous property equal to null to completely sever the connection.
     pop(){
         if(this.length === 0) return undefined;
         const oldTail = this.tail;
-        this.tail = oldTail.previous;
-        this.tail.next = null;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        }else{
+            this.tail = oldTail.previous;
+            this.tail.next = null;
+        }
+        oldTail.previous = null;
         this.length--;
         return oldTail;
     }
@@ -83,6 +91,6 @@ list.push(12);
 list.push(24);
 list.push(36);
 list.unshift(100);
-list.push(48);
+console.log(list.pop());
 // console.log(list);
-console.log(list.head.next);
+console.log(list);
