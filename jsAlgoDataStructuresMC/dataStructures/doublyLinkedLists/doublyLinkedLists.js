@@ -15,7 +15,9 @@ class DoublyLinkedList{
     //* Push Method PseudoCode:
     //? Add a new node to the end 
     //? If there aren't any nodes in the list, then new node is both the head and the tail
-    //? Else, the new node is simply the tail
+    //? Else, oldTail.next = new node and new node.previous is the oldTail.
+    //? Then make the new node is the tail
+    //? Increment the length, and then return the entire list.
     push(val){
         const node = new Node(val);
         if(!this.head){
