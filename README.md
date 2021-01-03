@@ -11,9 +11,15 @@
     - [**Different Types Of Recursive Functions**](#different-types-of-recursive-functions)
     - [**Examples**](#examples)
   - [**Searching Algorithms**](#searching-algorithms)
-    - [**Binary Search**](#binary-search)
     - [**Linear Search**](#linear-search)
+    - [**Binary Search**](#binary-search)
     - [**Naive String Search**](#naive-string-search)
+  - [**Sorting Algorithms**](#sorting-algorithms)
+    - [**Quadratic Sorting**](#quadratic-sorting)
+      - [**Bubble Sort**](#bubble-sort)
+      - [**Insertion Sort**](#insertion-sort)
+      - [**Selection Sort**](#selection-sort)
+    - [**Intermediate Sorting**](#intermediate-sorting)
 
 
 ## **General**
@@ -96,8 +102,37 @@ Enjoy!!
 
 ### **Searching Algorithms**
 
-#### **Binary Search**
-
 #### **Linear Search**
+- Simply check every element of an array to see if the element matches the search item.
+- Linear search is the best we do with an unsorted array.
+- Time Complexity: O(n)
+- Example: [linearSearh.js](https://github.com/plooney81/AlgoPractice/blob/master/jsAlgoDataStructuresMC/searchAlgorithms/linearSearch.js)
+
+#### **Binary Search**
+- Binary Search is a divide and conquer type algorithm that eliminates half of the remaining elements at a time.
+- The basics:
+  - Finds the element in the middle of the array and compares that to the search element
+  - If the middle is greater than the search:
+    - Than the algorithm eliminates all elements in the array to the right of the current middle
+  - If the middle is smaller than the search:
+    - Than the algorithm eliminates all elements in the array to the left of the current middle
+- Time Complexity: O(log n)
+- **NOTE: Binary Search Algorithm only works on SORTED arrays**
+- Example: [binarySearch.js](https://github.com/plooney81/AlgoPractice/blob/master/jsAlgoDataStructuresMC/searchAlgorithms/binarySearch.js)
 
 #### **Naive String Search**
+- Searches for substrings in a larger string
+- Nested for loops, out checks the larger string and inner checks the substring (or search string).
+- If the characters match, keep going, if they don't, break out of the inner loop, and go to the next character in the outer loop.
+- Time Complexity: O(n^2)
+- Example: [naiveStringSearch.js](https://github.com/plooney81/AlgoPractice/blob/master/jsAlgoDataStructuresMC/searchAlgorithms/naiveStringSearch.js)
+
+### **Sorting Algorithms**
+
+#### **Quadratic Sorting**
+
+##### **Bubble Sort**
+##### **Insertion Sort**
+##### **Selection Sort**
+
+#### **Intermediate Sorting**
