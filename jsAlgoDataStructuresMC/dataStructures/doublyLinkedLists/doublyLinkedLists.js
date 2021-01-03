@@ -97,6 +97,7 @@ class DoublyLinkedList{
     //* Get Method PseudoCode:
     //? Decide whether its quicker to start at the beginning and work to the end OR...
     //?     Start at the end and work towards the beginning
+    //? Either way will return the value at the specified index
     get(index){
         if(index < 0 || index >= this.length) return undefined;
         let current;
@@ -117,6 +118,17 @@ class DoublyLinkedList{
         }
         return current;
     }
+    //* Set Method PseudoCode:
+    //? Takes an index and a value
+    //? If index doesn't exist return false
+    //? If the index exists (i.e. is between 0 and this.length - 1) then we get the node at the specified index using the get method
+    //? Then update the value to be whatever is passed into the function.
+    //? If we successfully updated the value return true
+    set(index, val){
+        const node = this.get(index);
+        if(node) node.val = val;
+        return !!node;
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -125,7 +137,8 @@ list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
-console.log(list.get(-1));
+console.log(list.set(-1, 500));
+console.log(list);
 // list.unshift(100);
 // list.push(200);
 // list.unshift(50);
