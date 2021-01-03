@@ -94,15 +94,39 @@ class DoublyLinkedList{
         this.length++;
         return this;
     }
+    //* Get Method PseudoCode:
+    //? Decide whether its quicker to start at the beginning and work to the end OR...
+    //?     Start at the end and work towards the beginning
+    get(index){
+        if(index < 0 || index >= this.length) return undefined;
+        let current;
+        if((this.length - 1 - index) < index){
+            current = this.tail;
+            let count = this.length - 1;
+            while(count > index){
+                current = current.previous;
+                count--;
+            }
+        }else{
+            current = this.head;
+            let count = 0;
+            while(count < index){
+                current = current.next;
+                count++;
+            }
+        }
+        return current;
+    }
 }
 
 const list = new DoublyLinkedList();
 // console.log(list);
-// list.push(4);
-// list.push(12);
-// list.push(24);
-// list.push(36);
-list.unshift(100);
-list.push(200);
-list.unshift(50);
+list.push(4);
+list.push(12);
+list.push(24);
+list.push(36);
+console.log(list.get(-1));
+// list.unshift(100);
+// list.push(200);
+// list.unshift(50);
 // console.log(list);
