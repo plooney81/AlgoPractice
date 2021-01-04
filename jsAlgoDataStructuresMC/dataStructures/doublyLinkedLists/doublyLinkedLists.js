@@ -179,6 +179,21 @@ class DoublyLinkedList{
     }
     //* Reverse Method PseudoCode:
     //? Reverses all the nodes in a doubly linked list
+    reverse(){
+        let current = this.head;
+        this.head = this.tail;
+        this.tail = current;
+        let next = current.next;
+        let previous = null;
+        while(current){
+            next = current.next;
+            current.previous = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return this;
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -187,8 +202,9 @@ list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
-console.log(list.remove(1));
-console.log(list);
+list.reverse();
+console.log(list.head.next);
+// console.log(list);
 // console.log(list.set(-1, 500));
 // console.log(list);
 // list.unshift(100);
