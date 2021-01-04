@@ -164,18 +164,15 @@ class DoublyLinkedList{
     //? To make sure the node doesn't have any lingering connections...we need to set the .next and the .previous value = null
     remove(index){
         const removeNode = this.get(index);
-        if(index === 0) return !!this.shift();
-        if(index === this.length - 1) return !!this.pop();
-        if(removeNode){
-            const prevNode = removeNode.previous;
-            const nextNode = removeNode.next;
-            prevNode.next = nextNode;
-            nextNode.previous = prevNode;
-            removeNode.previous = null;
-            removeNode.next = null;
-            this.length--;
-        }
-        return !!removeNode;
+        if(!removeNode) return undefined;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        removeNode.previous.next = removeNode.next;
+        removeNode.next.previous = removeNode.previous;
+        removeNode.previous = null;
+        removeNode.next = null;
+        this.length--;
+        return removeNode;
     }
     //* Reverse Method PseudoCode:
     //? Reverses all the nodes in a doubly linked list
@@ -202,8 +199,9 @@ list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
-list.reverse();
-console.log(list.head.next);
+console.log(list.remove(40));
+console.log(list);
+// console.log(list.head.next);
 // console.log(list);
 // console.log(list.set(-1, 500));
 // console.log(list);
