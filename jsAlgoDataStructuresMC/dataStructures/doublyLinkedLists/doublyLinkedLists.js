@@ -154,6 +154,31 @@ class DoublyLinkedList{
         this.length++;
         return true;
     }
+    //* Remove Method PseudoCode:
+    //? Removes a node from a doubly linked list @ a specific position
+    //? Use the get method for the specified index, if the node doesn't exist return false
+    //? If the index is zero, we can simply use shift
+    //? if the index is length - 1, we can simply use pop
+    //? Else, we need to set the .next of the previous value = to the .next of the value to be removed
+    //? We also need to set the .previous of the next value = to the .previous of the value to be removed
+    //? To make sure the node doesn't have any lingering connections...we need to set the .next and the .previous value = null
+    remove(index){
+        const removeNode = this.get(index);
+        if(index === 0) return !!this.shift();
+        if(index === this.length - 1) return !!this.pop();
+        if(removeNode){
+            const prevNode = removeNode.previous;
+            const nextNode = removeNode.next;
+            prevNode.next = nextNode;
+            nextNode.previous = prevNode;
+            removeNode.previous = null;
+            removeNode.next = null;
+            this.length--;
+        }
+        return !!removeNode;
+    }
+    //* Reverse Method PseudoCode:
+    //? Reverses all the nodes in a doubly linked list
 }
 
 const list = new DoublyLinkedList();
@@ -162,7 +187,7 @@ list.push(4);
 list.push(12);
 list.push(24);
 list.push(36);
-list.insert(1, 100);
+console.log(list.remove(1));
 console.log(list);
 // console.log(list.set(-1, 500));
 // console.log(list);
