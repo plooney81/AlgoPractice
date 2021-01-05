@@ -73,10 +73,16 @@ function processData(input) {
     });
 } 
 
-let newStack = new Stack();
-newStack.push(1);
-console.log(newStack);
-newStack.push(2);
-console.log(newStack);
-newStack.pop();
-console.log(newStack);
+let test = `10
+1 97
+2
+1 20
+2
+1 26
+1 20
+2
+3
+1 91
+3`;
+
+processData(test);
