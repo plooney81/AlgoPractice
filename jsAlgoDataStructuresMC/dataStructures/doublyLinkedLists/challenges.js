@@ -73,3 +73,10 @@ const reverse = (head) => {
     }
     return previous;
 }
+//recursively
+const reverse2 = (head) => {
+    if(!head) return head; //if head is null returns the head
+    [head.next, head.prev] = [head.prev, head.next]; //swaps the head.next and head.prev
+    if(!head.prev) return head; //if head.prev is null (i.e. the end of the list) return the head
+    return reverse2(head.prev); //else keep going with head.prev
+}
