@@ -54,3 +54,22 @@ const sortedInsert = (head, data) => {
 
     return head;
 }
+
+//* Reverse a doubly linked List
+//? Given the pointer to the head node of a doubly linked list, reverse the order of the nodes in place.
+//? That is, change the next and prev pointers of the nodes so that the direction of the list is reversed.
+//? Return a reference to the head node of the reversed list.
+//? NOTE: the head node might be null to indicate that the list is empty.
+const reverse = (head) => {
+    if(!head) return head;
+    let current = head;
+    let previous = null;
+    while(current){
+        let temp = current.next;
+        current.next = current.prev;
+        current.prev = temp;
+        previous = current;
+        current = temp;
+    }
+    return previous;
+}
