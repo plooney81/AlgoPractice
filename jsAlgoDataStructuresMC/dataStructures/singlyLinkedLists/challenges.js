@@ -67,26 +67,23 @@ const CompareLists = (llist1, llist2) => {
 //* Merge Two Sorted Linked Lists
 //? Given pointers to the heads of two sorted linked lists, merge them into a single, sorted linked list.
 const mergeLists = (head1, head2) => {
-    let mergedHead = null;
+    let mergedList = new SinglyLinkedList();
     let current1 = head1;
     let current2 = head2;
-    let prev = null;
     while(current1 || current2){
-        let temp1 = current1;
-        let temp2 = current2;
-        if(!current2 || current1.data < current2.data){
-            if(!mergedHead) mergedHead = current1;
-            if(prev) prev.next = current1;
-            temp1 = current1.next;
-            prev = current2;
-        }else if(! current1 || current2.data < current1.data){
-            if(!mergedHead) mergedHead = current2;
-            if(prev) prev.next = current2;
-            temp2 = current2.next;
-            prev = current1;
+        if(!current1) {
+            mergedList.insertNode(current2.data)
+            current2 = current2.next;
+        }else if(!current2) {
+            mergedList.insertNode(current1.data)
+            current1 = current1.next;
+        }else if(current1.data < current2.data){
+            mergedList.insertNode(current1.data);
+            current1 = current1.next;
+        }else{
+            mergedList.insertNode(current2.data);
+            current2 = current2.next;
         }
-        current1 = temp1;
-        current2 = temp2;
     }
-    return mergedHead;
+    return mergedList.head;
 }
