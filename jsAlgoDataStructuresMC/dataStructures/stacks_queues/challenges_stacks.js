@@ -125,9 +125,9 @@ class Stack2{
 }
 
 const isBalanced = (input) => {
-    const anotherStack = new Stack2();
     let splitStr = input.split('\n');
     for(let out = 0; out < splitStr.length; out++){
+        const anotherStack = new Stack2();
         let str = splitStr[out];
         let output = 'YES';
         for(let i = 0; i < str.length; i++){
@@ -148,7 +148,7 @@ const isBalanced = (input) => {
                     break;
             }
         }
-        console.log(output);
+        return anotherStack.size > 0 ? 'NO' : output;
     }
 }
 
