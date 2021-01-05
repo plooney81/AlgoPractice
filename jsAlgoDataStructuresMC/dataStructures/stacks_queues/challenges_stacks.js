@@ -86,3 +86,80 @@ let test = `10
 3`;
 
 processData(test);
+
+//* Balanced Brackets
+//? A bracket is considered to be any of the following characters: (,), {, }, [, or].
+//? Two brackets are considered to be a matched pair if an opening bracket (i.e, (, [, or {) occurs to the left of a closing bracket of the same type
+//? There are three types of matched pairs of brackets: [], {}, and ().
+class Stack2{
+    constructor(){
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+    }
+    push(val){
+        const newNode = new Node(val);
+        if(this.size === 0){
+            this.first = newNode;
+        }else{
+            newNode.prev = this.last;
+            this.last.next = newNode;
+        }
+        this.last = newNode;
+        this.size++;
+    }
+    pop(){
+        if(this.size === 0) return undefined;
+        const poppedNode = this.last;
+        if(this.size === 1){
+            this.first = null;
+            this.last = null;
+        }else{
+            this.last = poppedNode.prev;
+            this.last.next = null;
+            poppedNode.prev = null;
+        }
+        this.size--;
+        return poppedNode;
+    }
+}
+
+const isBalanced = (input) => {
+    const anotherStack = new Stack2();
+    let splitStr = input.split('\n');
+    for(let out = 0; out < splitStr.length; out++){
+        let str = splitStr[out];
+        let output = 'YES';
+        for(let i = 0; i < str.length; i++){
+            switch(str[i]){
+                case '(':
+                case '{':
+                case '[':
+                    anotherStack.push(str[i]);
+                    break;
+                case ')':
+                    if(!anotherStack.first || anotherStack.pop().data !== '(') output = 'NO';
+                    break;
+                case '}':
+                    if(!anotherStack.first|| anotherStack.pop().data !== '{') output = 'NO';
+                    break;
+                case ']':
+                    if(!anotherStack.first || anotherStack.pop().data !== '[') output = 'NO';
+                    break;
+            }
+        }
+        console.log(output);
+    }
+}
+
+const test2 = '[{({})}]';
+const test3 = '[{({)}}]';
+const test4 = `}][}}(}][))]
+[](){()}
+()
+({}([][]))[]()
+{)[](}]}]}))}(())(
+([[)`
+// isBalanced(test2);
+// isBalanced(test3);
+isBalanced(test4);
