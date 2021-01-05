@@ -110,3 +110,22 @@ const getNode = (head, positionFromTail) => {
     }
     return newCurrent.data;
 }
+
+//* Cycle Detection
+//? A linked list is said to contain a cycle if any node is visited more than once while traversing the list.
+//? Given a pointer to the head of a linked list, determine if it contains a cycle. If it does return 1, else return 0.
+const hasCycle = (head) => {
+    let current = head;
+    while(current){
+        if(current.data === 'Infinity') return 1;
+        current.data = 'Infinity';
+        current = current.next;
+    }
+    return 0;
+}
+
+let newList = new SinglyLinkedList();
+let arr = [1,1,3,1,2,3];
+
+arr.forEach(num => newList.insertNode(num));
+console.log(hasCycle(newList.head));
