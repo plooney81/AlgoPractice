@@ -87,3 +87,26 @@ const mergeLists = (head1, head2) => {
     }
     return mergedList.head;
 }
+//* Get Node Value
+//? Given a pointer to the head of a linked list and a specific position, determine the data value at that position.
+//? Count backwards from the tail node. The tail is at position 0, its parent is at 1 and so on.
+const getNode = (head, positionFromTail) => {
+    //first we reverse the list
+    let current = head;
+    let previous = null;
+    while(current){
+        let temp = current.next;
+        current.next = previous;
+        previous = current;
+        current = temp;
+    }
+
+    //then we loop through our reversed list and return the right value
+    let newCurrent = previous;
+    let count = 0;
+    while(count < positionFromTail){
+        newCurrent = newCurrent.next;
+        count++;
+    }
+    return newCurrent.data;
+}
