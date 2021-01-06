@@ -44,6 +44,12 @@ class BinarySearchTree {
             }
         }
     }
+    find(val, current = this.root){
+        if(!current) return undefined;
+        if(val === current.val) return current;
+        else if(val < current.val) return current.left ? this.find(val, current.left) : undefined;
+        else if(val > current.val) return current.right ? this.find(val, current.right) : undefined;
+    }
 }
 
 let tree = new BinarySearchTree();
@@ -53,5 +59,4 @@ tree.insert(9);
 tree.insert(8);
 tree.insert(11);
 tree.insert(10);
-console.log(tree);
-console.log(tree.root.freq)
+console.log(tree.find(15));
