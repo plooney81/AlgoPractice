@@ -3,6 +3,7 @@ class Node {
         this.val = val;
         this.left = null;
         this.right = null;
+        this.freq = 1;
     }
 }
 
@@ -25,7 +26,10 @@ class BinarySearchTree {
         }else{
             let current = this.root;
             while(current){
-                if(newNode.val < current.val){
+                if(newNode.val === current.val){
+                    current.freq += 1;
+                    return this;
+                }else if(newNode.val < current.val){
                     if(!current.left){
                         current.left = newNode;
                         return this;
@@ -49,5 +53,6 @@ tree.insert(15);
 tree.insert(9);
 tree.insert(8);
 tree.insert(11);
-
+tree.insert(10);
 console.log(tree);
+console.log(tree.root.freq)
