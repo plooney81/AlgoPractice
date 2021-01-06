@@ -23,25 +23,24 @@ class BinarySearchTree {
         if(!this.root){
             this.root = newNode;
             return this;
-        }else{
-            let current = this.root;
-            while(current){
-                if(newNode.val === current.val){
-                    current.freq += 1;
+        }
+        let current = this.root;
+        while(current){
+            if(newNode.val === current.val){
+                current.freq += 1;
+                return this;
+            }else if(newNode.val < current.val){
+                if(!current.left){
+                    current.left = newNode;
                     return this;
-                }else if(newNode.val < current.val){
-                    if(!current.left){
-                        current.left = newNode;
-                        return this;
-                    }
-                    current = current.left;      
-                }else if(newNode.val > current.val){
-                    if(!current.right){
-                        current.right = newNode;
-                        return this;
-                    }
-                    current = current.right;      
                 }
+                current = current.left;      
+            }else if(newNode.val > current.val){
+                if(!current.right){
+                    current.right = newNode;
+                    return this;
+                }
+                current = current.right;      
             }
         }
     }
