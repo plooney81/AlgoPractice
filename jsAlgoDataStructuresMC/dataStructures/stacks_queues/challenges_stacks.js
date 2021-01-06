@@ -85,7 +85,7 @@ let test = `10
 1 91
 3`;
 
-processData(test);
+// processData(test);
 
 //* Balanced Brackets
 //? A bracket is considered to be any of the following characters: (,), {, }, [, or].
@@ -162,4 +162,28 @@ const test4 = `}][}}(}][))]
 ([[)`
 // isBalanced(test2);
 // isBalanced(test3);
-isBalanced(test4);
+// isBalanced(test4);
+
+//* Equal Stacks
+//? You have three stacks of cylinders where each cylinder has the same diameter, but they may vary in height.
+//? You can change the height of a stack by removing and discarding its topmost cylinder any number of times.
+//? Find the maximum possible height of the stacks such that all of the stackers are exactly the same height.
+//? This means you must removed zero or more cyclinders from the top of zero or more of the three stacks until they are all the same height
+//? Then return the height.
+const equalStacks = (h1, h2, h3) => {
+    let stack1 = new Stack2();
+    let stack2 = new Stack2();
+    let stack3 = new Stack2();
+    h1.forEach(integer => stack1.push(integer));
+    h2.forEach(integer => stack2.push(integer));
+    h3.forEach(integer => stack3.push(integer));
+    while(stack1.size !== stack2.size && stack2.size !== stack3.size){
+        //find the max last of all the three
+        let max = Math.max(stack1.last, stack2.last, stack3.last);
+
+        if(stack1.size === 0 || stack2.size === 0 || stack3.size === 0){
+            return 0;
+        }
+    }
+    return stack1.size;
+}
