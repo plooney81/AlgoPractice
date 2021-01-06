@@ -70,9 +70,9 @@ class BinarySearchTree {
     //? Essentially the same as the above insert...except we are saving new nodes with the value, and if we find a null left or right then we return undefined.
     find(val, current = this.root){
         if(!current) return undefined;
-        if(val === current.val) return current;
-        else if(val < current.val) return current.left ? this.find(val, current.left) : undefined;
+        if(val < current.val) return current.left ? this.find(val, current.left) : undefined;
         else if(val > current.val) return current.right ? this.find(val, current.right) : undefined;
+        else return current;
     }
 }
 
