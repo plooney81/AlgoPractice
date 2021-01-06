@@ -170,20 +170,59 @@ const test4 = `}][}}(}][))]
 //? Find the maximum possible height of the stacks such that all of the stackers are exactly the same height.
 //? This means you must removed zero or more cyclinders from the top of zero or more of the three stacks until they are all the same height
 //? Then return the height.
-const equalStacks = (h1, h2, h3) => {
-    let stack1 = new Stack2();
-    let stack2 = new Stack2();
-    let stack3 = new Stack2();
-    h1.forEach(integer => stack1.push(integer));
-    h2.forEach(integer => stack2.push(integer));
-    h3.forEach(integer => stack3.push(integer));
-    while(stack1.size !== stack2.size && stack2.size !== stack3.size){
-        //find the max last of all the three
-        let max = Math.max(stack1.last, stack2.last, stack3.last);
-
-        if(stack1.size === 0 || stack2.size === 0 || stack3.size === 0){
-            return 0;
-        }
+class Stack3{
+    constructor(){
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+        this.height = 0;
     }
-    return stack1.size;
+    push(val){
+        const newNode = new Node(val);
+        if(this.size === 0){
+            this.first = newNode;
+        }else{
+            newNode.prev = this.last;
+            this.last.next = newNode;
+        }
+        this.height += val;
+        this.last = newNode;
+        this.size++;
+    }
+    pop(){
+        if(this.size === 0) return undefined;
+        const poppedNode = this.last;
+        if(this.size === 1){
+            this.first = null;
+            this.last = null;
+        }else{
+            this.last = poppedNode.prev;
+            this.last.next = null;
+            poppedNode.prev = null;
+        }
+        this.height -= poppedNode.data;
+        this.size--;
+        return poppedNode;
+    }
 }
+const equalStacks = (h1, h2, h3) => {
+    let stack1 = new Stack3();
+    let stack2 = new Stack3();
+    let stack3 = new Stack3();
+    h1.reverse().forEach(integer => stack1.push(integer));
+    h2.reverse().forEach(integer => stack2.push(integer));
+    h3.reverse().forEach(integer => stack3.push(integer));
+    while(true){
+        let min = Math.min(stack1.height, stack2.height, stack3.height);
+        if(stack1.height === stack2.height && stack2.height === stack3.height) return stack1.height;
+        if(stack1.height > min) stack1.pop();
+        if(stack2.height > min) stack2.pop();
+        if(stack3.height > min) stack3.pop();
+    }
+}
+
+let arr1 = [3, 2, 1, 1, 1];
+let arr2 = [4, 3, 2];
+let arr3 = [1, 1, 4, 1];
+
+console.log(equalStacks(arr1, arr2, arr3));
