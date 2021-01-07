@@ -59,14 +59,16 @@ class Queue{
     }
 }
 
-const queue = new Queue();
-queue.enqueue("Pete");
-queue.enqueue("David");
-queue.enqueue("Shannon");
-queue.enqueue("Beth");
-console.log(queue.dequeue());
-console.log(queue.dequeue());
-console.log(queue.dequeue());
-console.log(queue.dequeue());
-console.log(queue.dequeue());
-console.log(queue);
+// const queue = new Queue();
+// queue.enqueue("Pete");
+// queue.enqueue("David");
+// queue.enqueue("Shannon");
+// queue.enqueue("Beth");
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue);
+
+module.exports = { Node, Queue}
