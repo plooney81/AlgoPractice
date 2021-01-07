@@ -83,5 +83,7 @@ tree.insert(9);
 tree.insert(8);
 tree.insert(11);
 tree.insert(10);
-console.log(tree);
+// console.log(tree);
 // console.log(tree.find(15));
+
+module.exports = { Node, BinarySearchTree}
