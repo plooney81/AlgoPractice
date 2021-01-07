@@ -1,4 +1,4 @@
-let queue = require('../stacks_queues/queues');
+let q = require('../stacks_queues/queues');
 
 class Node {
     constructor(val){
@@ -39,6 +39,7 @@ class BinarySearchTree {
         else if(val > current.val) return current.right ? this.find(val, current.right) : undefined;
         else return current;
     }
+    //* BFS using an array for the queue
     BFS(){
         let data = [];
         let queue = [];
@@ -52,6 +53,20 @@ class BinarySearchTree {
         }
         return data;
     }
+    //* BFS using custom queue class
+    BFS2(){
+        let data = [];
+        let queue = new q.Queue();
+        let node = this.root;
+        queue.enqueue(node);
+        while(queue.size > 0){
+            node = queue.dequeue().val;
+            data.push(node.val);
+            if(node.left) queue.enqueue(node.left);
+            if(node.right) queue.enqueue(node.right);
+        }
+        return data;
+    }
 }
 
 let tree = new BinarySearchTree();
@@ -62,3 +77,4 @@ tree.insert(8);
 tree.insert(3);
 tree.insert(20);
 console.log(tree.BFS());
+console.log(tree.BFS2());
