@@ -76,5 +76,5 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(3);
 tree.insert(20);
-console.log(tree.BFS());
-console.log(tree.BFS2());
+console.log(tree.BFS()); //10, 6, 15, 3, 8, 20
+console.log(tree.BFS2()); //10, 6, 15, 3, 8, 20
