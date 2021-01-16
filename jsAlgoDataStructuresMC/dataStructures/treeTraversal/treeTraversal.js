@@ -67,6 +67,18 @@ class BinarySearchTree {
         }
         return data;
     }
+    //* DFS_preorder using helper recursive function
+    dfs_preOrder(){
+        let visited = [];
+        //Recursive helper function
+        const traverse = (node) => {
+            visited.push(node.val)
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);    
+        }
+        traverse(this.root)
+        return visited;
+    }
 }
 
 let tree = new BinarySearchTree();
@@ -76,5 +88,6 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(3);
 tree.insert(20);
-console.log(tree.BFS()); //10, 6, 15, 3, 8, 20
-console.log(tree.BFS2()); //10, 6, 15, 3, 8, 20
+// console.log(tree.BFS()); //10, 6, 15, 3, 8, 20
+// console.log(tree.BFS2()); //10, 6, 15, 3, 8, 20
+console.log(tree.dfs_preOrder()); //10, 6, 3, 8, 15, 20
