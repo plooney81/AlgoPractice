@@ -116,7 +116,7 @@ TestBst.insert(2)
 TestBst.insert(5)
 TestBst.insert(3)
 TestBst.insert(6)
-TestBst.insert(4)
+# TestBst.insert(4)
 
 # postOrder(TestBst.root)
 # # preOrder(TestBst.root)
