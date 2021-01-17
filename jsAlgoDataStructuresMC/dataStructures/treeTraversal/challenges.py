@@ -119,5 +119,5 @@ TestBst.insert(6)
 TestBst.insert(4)
 
 # postOrder(TestBst.root)
-# preOrder(TestBst.root)
-inOrder(TestBst.root)
+# # preOrder(TestBst.root)
+# inOrder(TestBst.root)
