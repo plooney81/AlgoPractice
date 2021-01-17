@@ -113,3 +113,5 @@ tree.insert(20);
 // console.log(tree.dfs_preOrder()); //10, 6, 3, 8, 15, 20
 // console.log(tree.dfs_postOrder()); //3, 8, 6, 20, 15, 10
 console.log(tree.dfs_inOrder()); //3, 6, 8, 10, 15, 20
+
+module.exports = { Node, BinarySearchTree}
