@@ -114,13 +114,24 @@ def inOrder(root):
 #? Height of a binary tree is the number od edges between the tree's root and its furthest leaf.
 #? Function must return the height of a binary tree as an integer
 def height(root):
-    keepTrackOfHeight = []
     def traverse(node):
-        keepTrackOfHeight.append(node.info)
-        if node.left: traverse(node.left)
-        if node.right: traverse(node.right)
+        if node is None: return 0
+        return 1 + max(traverse(node.left), traverse(node.right))
+    return traverse(root) - 1
+
+
+#* Tree: Top View
+#? Given a pointer to the root of a binary tree, print the top view of the binary tree.
+#? The tree seen from teh top nodes, is called the top view of the tree
+def topView(root):
+    def traverse(node):
+        if node.left:
+            print(node.info, end=' ')
+            traverse(node.left)
+        if node.right:
+            print(node.info, end=' ')
+            traverse(node.right)
     traverse(root)
-    return keepTrackOfHeight
 
 TestBst = BST()
 TestBst.insert(1)
@@ -133,4 +144,5 @@ TestBst.insert(4)
 # postOrder(TestBst.root)
 # # preOrder(TestBst.root)
 # inOrder(TestBst.root)
-print(height(TestBst.root))
+# print(height(TestBst.root))
+topView(TestBst.root)
