@@ -110,14 +110,27 @@ def inOrder(root):
         if node.right: traverse(node.right)
     traverse(root)
 
+#* Tree: Height of a Binary Tree
+#? Height of a binary tree is the number od edges between the tree's root and its furthest leaf.
+#? Function must return the height of a binary tree as an integer
+def height(root):
+    keepTrackOfHeight = []
+    def traverse(node):
+        keepTrackOfHeight.append(node.info)
+        if node.left: traverse(node.left)
+        if node.right: traverse(node.right)
+    traverse(root)
+    return keepTrackOfHeight
+
 TestBst = BST()
 TestBst.insert(1)
 TestBst.insert(2)
 TestBst.insert(5)
 TestBst.insert(3)
 TestBst.insert(6)
-# TestBst.insert(4)
+TestBst.insert(4)
 
 # postOrder(TestBst.root)
 # # preOrder(TestBst.root)
 # inOrder(TestBst.root)
+print(height(TestBst.root))
