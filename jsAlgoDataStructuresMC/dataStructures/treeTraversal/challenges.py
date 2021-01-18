@@ -123,26 +123,59 @@ def height(root):
 #* Tree: Top View
 #? Given a pointer to the root of a binary tree, print the top view of the binary tree.
 #? The tree seen from teh top nodes, is called the top view of the tree
+
+# def left_view(root):
+#     if not root: return
+#     print(root.info, end=' ')
+#     left_view(root.left)
+
+# def right_view(root):
+#     if not root: return
+#     print(root.info, end=' ')
+#     right_view(root.right)
+
+# def topView(root):
+#     left_view(root.left)
+#     print(root.info, end=' ')
+#     right_view(root.right)
+
 def topView(root):
-    def traverse(node):
-        if node.left:
-            print(node.info, end=' ')
-            traverse(node.left)
-        if node.right:
-            print(node.info, end=' ')
-            traverse(node.right)
-    traverse(root)
+    ret = []
+    q = []
+    s = set()
+    q.append([root, 0])
+    
+    while len(q) > 0:
+        x = q.pop(0)
+        if x[1] not in s:
+            s.add(x[1])
+            ret.append([x[0].info, x[1]])
+        if x[0].left:
+            q.append([x[0].left, x[1] - 1])
+        if x[0].right:
+            q.append([x[0].right, x[1] + 1])
+        
+    ret.sort(key = lambda x: x[1])
+    ret = [x[0] for x in ret]
+        
+    print(' '.join([str(x) for x in ret]))
 
 TestBst = BST()
-TestBst.insert(1)
-TestBst.insert(2)
-TestBst.insert(5)
-TestBst.insert(3)
-TestBst.insert(6)
-TestBst.insert(4)
+testList = [1, 14, 3, 7, 4, 5, 15, 6, 13, 10, 11, 2, 12, 8, 9]
+for num in testList: TestBst.insert(num)
+topView(TestBst.root) #2 1 14 15 12
+
+
+
+# TestBst.insert(1)
+# TestBst.insert(2)
+# TestBst.insert(5)
+# TestBst.insert(3)
+# TestBst.insert(6)
+# TestBst.insert(4)
 
 # postOrder(TestBst.root)
 # # preOrder(TestBst.root)
 # inOrder(TestBst.root)
 # print(height(TestBst.root))
-topView(TestBst.root)
+# topView(TestBst.root)
