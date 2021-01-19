@@ -22,7 +22,4 @@ maxBinaryVar.insert(45)
 maxBinaryVar.insert(100)
 maxBinaryVar.insert(65)
 maxBinaryVar.insert(40)
-# print(maxBinaryVar.insert(53))
-test = 'testing yo'
-blah = f'{test}, don\'t mind me'
-print(f'{test}, don\'t mind me')
+print(maxBinaryVar.insert(53))
