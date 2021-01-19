@@ -17,19 +17,16 @@ class BST:
         if not current and not self.root:
             self.root = Node(val)
             return self
-
         if not current: current = self.root
         if val == current.info:
             current.freq += 1
             return self
         elif val < current.info:
             if current.left: return self.insert(val, current.left)
-            else: 
-                current.left = Node(val)
+            current.left = Node(val)
         elif val > current.info:
             if current.right: return self.insert(val, current.right)
-            else:
-                current.right = Node(val)
+            current.right = Node(val)
 
 #* Tree: Preorder Traversal
 #? Must print the values in the tree's preorder traversal as a single line of space-separated values
