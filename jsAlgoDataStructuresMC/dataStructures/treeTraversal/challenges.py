@@ -182,6 +182,10 @@ def levelOrder(root):
             q.append(popped.right)
     print(' '.join([str(x) for x in ret]))
 
+#* Binary Search Tree: Insertion
+#? Given a pointer to the root of a binary search tree and values to be inserted into the tree.
+#? Insert the values into their appropriate position in the binary search tree and return the root of the updated binary tree.
+# solved on line 16-32
 
 TestBst = BST()
 testList = [1, 2, 5, 3, 6, 4]
