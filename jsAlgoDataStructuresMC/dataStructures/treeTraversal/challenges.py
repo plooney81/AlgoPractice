@@ -160,22 +160,36 @@ def topView(root):
         
     print(' '.join([str(x) for x in ret]))
 
+# TestBst = BST()
+# testList = [1, 14, 3, 7, 4, 5, 15, 6, 13, 10, 11, 2, 12, 8, 9]
+# for num in testList: TestBst.insert(num)
+# topView(TestBst.root) #2 1 14 15 12
+
+
+#* Tree: Level Order Traversal
+#? Given a pointer to the root of a binary tree, you need to print the level order traversal of this tree.
+#? In level-order traversal, nodes are visited level by level from left to right.
+def levelOrder(root):
+    q = []
+    ret = []
+    q.append(root)
+    while len(q) > 0:
+        popped = q.pop(0)
+        ret.append(popped.info)
+        if popped.left:
+            q.append(popped.left)
+        if popped.right:
+            q.append(popped.right)
+    print(' '.join([str(x) for x in ret]))
+
+
 TestBst = BST()
-testList = [1, 14, 3, 7, 4, 5, 15, 6, 13, 10, 11, 2, 12, 8, 9]
+testList = [1, 2, 5, 3, 6, 4]
 for num in testList: TestBst.insert(num)
-topView(TestBst.root) #2 1 14 15 12
-
-
-
-# TestBst.insert(1)
-# TestBst.insert(2)
-# TestBst.insert(5)
-# TestBst.insert(3)
-# TestBst.insert(6)
-# TestBst.insert(4)
 
 # postOrder(TestBst.root)
 # # preOrder(TestBst.root)
 # inOrder(TestBst.root)
 # print(height(TestBst.root))
 # topView(TestBst.root)
+levelOrder(TestBst.root)
