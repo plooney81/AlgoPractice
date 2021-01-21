@@ -29,13 +29,15 @@ class MaxBinaryHeap{
         let popped = this.values.pop();
         let parent = 0;
         while(true){
-            let left = this.values[2 * parent + 1] ? 2 * parent + 1 : undefined;
-            let right = this.values[2 * parent + 2] ? 2 * parent + 2 : undefined;
-            if(!left && !right || this.values[parent] > this.values[left] && this.values[parent] > this.values[right]) return popped
-            if(this.values[left] > this.values[right] || right == undefined){
+            let left = 2 * parent + 1;
+            let right = 2 * parent + 2
+            let leftElement = this.values[left] || 0;
+            let rightElement = this.values[right] || 0;
+            if(this.values[parent] > leftElement && this.values[parent] > rightElement) return popped
+            if(this.values[left] > rightElement){
                 [this.values[parent], this.values[left]] = [this.values[left], this.values[parent]]
                 parent = left;
-            }else if(this.values[right] > this.values[left] || left == undefined){
+            }else if(this.values[right] > leftElement){
                 [this.values[parent], this.values[right]] = [this.values[right], this.values[parent]]
                 parent = right;
             }
@@ -53,8 +55,24 @@ newBinaryHeap.insert2(100);
 newBinaryHeap.insert2(65);
 newBinaryHeap.insert2(40);
 newBinaryHeap.insert2(53);
+newBinaryHeap.extractMax()
 console.log(newBinaryHeap.values);
-console.log(newBinaryHeap.extractMax())
+newBinaryHeap.extractMax()
 console.log(newBinaryHeap.values);
-console.log(newBinaryHeap.extractMax())
+newBinaryHeap.extractMax()
+console.log(newBinaryHeap.values);
+newBinaryHeap.extractMax()
+console.log(newBinaryHeap.values);
+newBinaryHeap.extractMax()
+console.log(newBinaryHeap.values);
+newBinaryHeap.extractMax()
+console.log(newBinaryHeap.values);
+newBinaryHeap.extractMax()
+console.log(newBinaryHeap.values);
+newBinaryHeap.extractMax()
+
+// console.log(newBinaryHeap.extractMax())
+// console.log(newBinaryHeap.extractMax())
+// console.log(newBinaryHeap.extractMax())
+
 console.log(newBinaryHeap.values);
