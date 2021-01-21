@@ -26,6 +26,7 @@ class MaxBinaryHeap{
     }
     extractMax(){
         [this.values[0], this.values[this.values.length - 1]] = [this.values[this.values.length - 1], this.values[0]];
+        if(this.values.length === 1) return this.values.pop()
         let popped = this.values.pop();
         let parent = 0;
         while(true){
@@ -55,6 +56,8 @@ newBinaryHeap.insert2(100);
 newBinaryHeap.insert2(65);
 newBinaryHeap.insert2(40);
 newBinaryHeap.insert2(53);
+newBinaryHeap.extractMax()
+console.log(newBinaryHeap.values);
 newBinaryHeap.extractMax()
 console.log(newBinaryHeap.values);
 newBinaryHeap.extractMax()
