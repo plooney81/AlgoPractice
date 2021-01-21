@@ -28,13 +28,10 @@ class MaxBinaryHeap{
         [this.values[0], this.values[this.values.length - 1]] = [this.values[this.values.length - 1], this.values[0]];
         let popped = this.values.pop();
         let parent = 0;
-        let left, right
         while(true){
-            left = 2 * parent + 1;
-            right = 2 * parent + 2;
-            left = this.values[left] ? left : undefined;
-            right = this.values[right] ? right : undefined;
-            if(left == undefined && right == undefined || this.values[parent] > this.values[left] && this.values[parent] > this.values[right]) return popped
+            let left = this.values[2 * parent + 1] ? 2 * parent + 1 : undefined;
+            let right = this.values[2 * parent + 2] ? 2 * parent + 2 : undefined;
+            if(!left && !right || this.values[parent] > this.values[left] && this.values[parent] > this.values[right]) return popped
             if(this.values[left] > this.values[right] || right == undefined){
                 [this.values[parent], this.values[left]] = [this.values[left], this.values[parent]]
                 parent = left;
