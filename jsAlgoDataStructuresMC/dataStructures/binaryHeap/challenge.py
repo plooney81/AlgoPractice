@@ -1,12 +1,11 @@
 import math
 
 class Node:
-    def __init__(self, cookTime, arrivalTime, val):
+    def __init__(self, cookTime, arrivalTime):
         self.cookTime = cookTime
         self.arrivalTime = arrivalTime
-        self.val = val
     def __str__(self):
-        return f'Node [cookTime:{self.cookTime}, arrivalTime:{self.arrivalTime} val:{self.val}]'
+        return f'Node [cookTime:{self.cookTime}, arrivalTime:{self.arrivalTime}]'
 
 class PriorityQue:
     def __init__(self):
@@ -19,14 +18,14 @@ class PriorityQue:
         try:
             return self.queue[index].cookTime
         except IndexError:
-            return 0
+            return 100
 
-    def insert(self, cookTime, arrivalTime, val):
-        self.queue.append(Node(cookTime, arrivalTime, val))
+    def insert(self, cookTime, arrivalTime):
+        self.queue.append(Node(cookTime, arrivalTime))
         child = len(self.queue) - 1
         while True:
             parent = math.floor((child - 1) / 2) if math.floor((child - 1) / 2) > 0 else 0
-            if self.queue[child].cookTime > self.queue[parent].cookTime:
+            if self.queue[child].cookTime < self.queue[parent].cookTime:
                 self.swap(child, parent)
                 child = parent
             else:
@@ -44,10 +43,10 @@ class PriorityQue:
             leftcookTime = self.check_index(left)
             rightcookTime = self.check_index(right)
             if (leftcookTime == 0 and rightcookTime == 0) or (self.queue[parent].cookTime > leftcookTime and self.queue[parent].cookTime > rightcookTime): return popped
-            if leftcookTime >= rightcookTime:
+            if leftcookTime <= rightcookTime:
                 self.swap(parent, left)
                 parent = left
-            elif rightcookTime > leftcookTime:
+            elif rightcookTime < leftcookTime:
                 self.swap(parent, right)
                 parent = right
     
@@ -59,3 +58,13 @@ class PriorityQue:
 #? Restaurant owner wants to minimize the average waiting time of his customers
 #? Write a function that does that
 # example minAverage([0, 3], [1, 9],[2, 6]) --> 9
+def minAverage(list):
+    pq = PriorityQue()
+    for customers in list: pq.insert(customers[1], customers[0])
+
+    pq.printQueue()
+    pq.extractMax()
+    pq.printQueue()
+
+playList = [[0, 3], [1, 9],[2, 6]]
+minAverage(playList)
