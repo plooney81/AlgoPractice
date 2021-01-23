@@ -31,9 +31,9 @@ class PriorityQue:
             else:
                 return self.queue
     
-    def extractMax(self):
-        if len(self.queue) == 1: return self.queue.pop(-1)
+    def extractMin(self):
         if len(self.queue) == 0: return self.queue
+        if len(self.queue) == 1: return self.queue.pop(-1)
         self.swap(0, -1)
         popped = self.queue.pop(-1)
         parent = 0
@@ -42,7 +42,7 @@ class PriorityQue:
             right = 2 * parent + 2
             leftcookTime = self.check_index(left)
             rightcookTime = self.check_index(right)
-            if (leftcookTime == 0 and rightcookTime == 0) or (self.queue[parent].cookTime > leftcookTime and self.queue[parent].cookTime > rightcookTime): return popped
+            if (leftcookTime == 100 and rightcookTime == 100) or (self.queue[parent].cookTime < leftcookTime and self.queue[parent].cookTime < rightcookTime): return popped
             if leftcookTime <= rightcookTime:
                 self.swap(parent, left)
                 parent = left
@@ -59,12 +59,35 @@ class PriorityQue:
 #? Write a function that does that
 # example minAverage([0, 3], [1, 9],[2, 6]) --> 9
 def minAverage(list):
+    # Creates a new instance of the PriorityQue Class
     pq = PriorityQue()
-    for customers in list: pq.insert(customers[1], customers[0])
+    # List to save the wait times for each customer
+    waitTimes = []
+    totalTime = 0
+    # Inserts the list data into our new PriorityQue Class
+    for customers in list: 
+        if customers[0] == 0:
+            waitTimes.append(customers[1])
+            totalTime += customers[1]
+        else:
+            pq.insert(customers[1], customers[0])
 
-    pq.printQueue()
-    pq.extractMax()
-    pq.printQueue()
+    while len(pq.queue) > 0:
+        newCustomer = pq.extractMin()
+        newCustomerWaitTime = 0
+        if totalTime < newCustomer.arrivalTime:
+            newCustomerWaitTime = newCustomer.cookTime
+            totalTime += newCustomer.cookTime
+        else:
+            totalTime += newCustomer.cookTime
+            newCustomerWaitTime = totalTime - newCustomer.arrivalTime
+        waitTimes.append(newCustomerWaitTime)
+
+    return math.floor(sum(waitTimes)/len(waitTimes))
+
 
 playList = [[0, 3], [1, 9],[2, 6]]
-minAverage(playList)
+print(minAverage(playList)) # 9
+
+anotherList = [[0, 9], [10, 4]]
+print(minAverage(anotherList)) # 6
