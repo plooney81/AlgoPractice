@@ -128,6 +128,6 @@ grid3 =  [  [".",".","5",".",".",".",".",".","."],
             [".","1",".",".",".",".",".",".","."], 
             ["2","4",".",".",".",".","9",".","."]]
 
-print(sudoku(grid))
-print(sudoku(grid2))
-print(sudoku(grid3))
+print(sudoku(grid)) #true
+print(sudoku(grid2)) #false
+print(sudoku(grid3)) #false
