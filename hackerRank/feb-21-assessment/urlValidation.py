@@ -1,6 +1,7 @@
 from urllib.parse import urlparse
 import ipaddress
 import re
+import os
 
 
 #! URL Validation
@@ -61,11 +62,21 @@ def validateURL(url):
     
     
     #4. validate unicode characters within the URI only
-    
+    for char in parsed.netloc:
+        if ord(char) > 127:
+            return 0
+
+
+
     #5. check query string parameters and page anchors
+    for char in parsed.query:
+        if char == " ": return 0
     
     #6. check file extension notation
-    
+    for char in parsed.path:
+        if char == " ": return 0
+
+
     #7. return 0 if false and 1 if true
 
     return 1
