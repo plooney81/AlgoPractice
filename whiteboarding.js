@@ -45,3 +45,38 @@ const indexEqualTarget = (arr, target) => {
 const reversString = string => string.split('').reverse().join('');
 
 // console.log(reversString('hello world'));
+
+//!Given an array of random strings, Write a function that will return a new array with only the words that contain the letter 'e'.
+// randomStrings = ['elephant', 'cat', 'penguin', 'bird', 'dog', 'rat', 'lion', 'parrot']
+
+const eWords = (arrayOfWords) => {
+    let index = 0
+    let charIndex = 0;
+    let returnArray = [];
+    while (index < arrayOfWords.length){
+        if (charIndex >= arrayOfWords[index].length){
+            index++, charIndex = 0;
+        } else if (arrayOfWords[index][charIndex].toLowerCase() === 'e'){
+            returnArray.push(arrayOfWords[index]);
+            index++, charIndex = 0;
+        }else{
+            charIndex++;
+        }
+    }
+    return returnArray;
+}
+
+const eWords2 = (arrayOfWords) => {
+    let returnArray = [];
+
+    if(arrayOfWords.length === 0) return returnArray;
+    if(arrayOfWords[0].toLowerCase().includes('e')){
+        returnArray.push(arrayOfWords[0])
+    }
+    returnArray = returnArray.concat(eWords2(arrayOfWords.slice(1)));
+    return returnArray
+}
+
+let randomStrings = ['elephant', 'cat', 'penguin', 'bird', 'dog', 'rat', 'lion', 'parrot'];
+console.log(eWords(randomStrings));
+console.log(eWords2(randomStrings))
