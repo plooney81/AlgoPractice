@@ -38,3 +38,10 @@ const productOfArray = (array, sum=1) => {
 
 // console.log(productOfArray([1, 2, 3, 10]))
 
+const stackOverflow = () => {
+    stackOverflow()
+}
+
+stackOverflow()
+
+

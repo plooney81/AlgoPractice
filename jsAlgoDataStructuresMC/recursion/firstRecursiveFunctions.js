@@ -14,6 +14,7 @@ const countDown = (num) => {
     num--;
     countDown(num);
 }
+countDown(3)
 
 // countDown(10);
 // countDown(9);
@@ -29,8 +30,9 @@ const sumRange1 = (num) => {
     if(num === 1){
         return 1;
     }
-    return num + sumRange(num - 1);
+    return num + sumRange1(num - 1);
 }
+console.log(sumRange1(3))
 
 // Refactored
 const sumRange = (num) => {
